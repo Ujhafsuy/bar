@@ -1,11 +1,11 @@
-import menu from '../../../images/list.svg'
+import { Menu, User } from "lucide-react"
 
 export function Header() {
     return(
-        <header>
-            <img src={menu} alt="" className='w-[2.125rem] h-[1.5rem]' />
-            <h1><span className=''>B</span>.A.R.</h1>
-            <img src="#" alt="Foto user" />
+        <header className="fixed bg-(--bg-header) w-full flex items-center justify-between p-[1rem]">
+            <Menu />
+            <h1 className="text-[2.125rem]"><span className='text-(--ciano)'>B</span>.A.R.</h1>
+            <User />
         </header>
     )
 }

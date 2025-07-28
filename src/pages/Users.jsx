@@ -2,6 +2,7 @@ import { useState } from "react"
 import { User, Mail, Lock, Camera, Save, Trash2, Settings, Upload, X, ChevronRight, Home } from "lucide-react"
 import { Header } from "../components/common/Header"
 import Footer from "../components/common/Footer"
+import { Button } from "../components/common/Button"
 
 function Users() {
     const [formData, setFormData] = useState({
@@ -109,12 +110,16 @@ function Users() {
                     </div>
                   )}
                 </div>
-                <button
+                <Button
+                  imagem={true}
+                  componente={true}
+                  contentComponent={<Camera className="h-4 w-4" />}
+                  
                   onClick={handleChangePhoto}
                   className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full bg-white shadow-lg hover:shadow-xl transition-shadow flex items-center justify-center text-gray-600 hover:text-blue-600"
                 >
-                  <Camera className="h-4 w-4" />
-                </button>
+                  
+                </Button>
               </div>
 
               <div className="text-white">

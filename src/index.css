@@ -1,6 +1,7 @@
 @import "tailwindcss";
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+
+:root{
+  --ciano: #2ACDC5;
+  --bg-header: #fff;
+  --section-home-one: #2d2d2d;
 }

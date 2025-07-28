@@ -1,8 +1,9 @@
 import { Header } from "../components/common/Header"
 import Footer from "../components/common/Footer"
 import { useState } from "react"
+import { Button } from "../components/common/Button"
 
-function Controle() {
+export function Controle() {
     const usersList = []
     const [showMenu, setShowMenu] = useState(false)
 
@@ -34,6 +35,7 @@ function Controle() {
                     </div>
                     <div>
                         <h2>Lista de Usuários</h2>
+                        {/*fazer a estrutura de users*/}
                         <div>
                             <img src="" alt="icon pessoas" />
                             <div>
@@ -57,4 +59,70 @@ function Controle() {
     )
 }
 
-export default Controle
+export function ControleItens() {
+    const itensList = [
+        {img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"}
+    ]
+    const [showImage, setShowImage] = useState(false)
+    const [addImage, setAddImage] = useState(false)
+
+    const handleConfirmPhoto = () => {
+        if (selectedImage) {
+          setCurrentAvatar(selectedImage)
+          setAddImage(false)
+          setSelectedImage(null)
+        }
+    }
+    
+    const handleCancelPhoto = () => {
+        setAddImage(false)
+        setSelectedImage(null)
+    }
+
+    return(
+        <div>
+            <Header />
+            <main>
+                <section>
+                    <img src="" alt="Seta" />
+                    <h1>Controle de Itens</h1>
+                        <Button />
+                        <Button />
+                    <div>
+                        <div>
+                            <div>
+                                <h2>Produto</h2>
+                                <Button conteudo="Editar" />
+                            </div>
+                            <p>Fotos:</p>
+                        </div>
+                        <div>
+                            <img src="" alt="Imagem do Item" onClick={() => setShowImage(!showImage)} />
+                            {showImage && (
+                                <div className="relative flex flex-row align-items justify-center">
+                                    {/*Imagens*/}
+                                    <p>seta</p>
+                                    <div className="bg-[gray] h-[40rem] w-[80%]"></div>
+                                    <p>seta</p>
+                                </div>
+                            )}
+                            {/*Adicionar imagens*/}
+                            <div onClick={() => setAddImage(!addImage)}>
+                                <img src="" alt="add imagens" />
+                                {addImage && (
+                                    <div>
+
+                                    </div>
+                                )}
+                            </div>
+
+                            <Button conteudo="Adicionar Imagem" />
+                        </div>
+                    </div>
+                </section>
+                
+            </main>
+            <Footer />
+        </div>
+    )
+}

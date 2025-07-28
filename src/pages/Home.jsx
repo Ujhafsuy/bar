@@ -2,19 +2,20 @@ import { Header } from "../components/common/Header"
 import { Button } from "../components/common/Button"
 import { Link } from "react-router-dom"
 import Footer from "../components/common/Footer"
+import projeto from '../images/projeto_fic.png'
 
 function Home() {
     return (
         <>
             <Header />
-            <main>
-                <section>
-                    <img src="#" alt="Foto do Projeto" />
-                    <h1><span className=''>B</span>.A.R.</h1>
-                    <p>Biochemical Ads Robot</p>
+            <main className="font-light">
+                <section className="h-screen flex flex-col items-center justify-center bg-(--section-home-one)">
+                    <h1 className="text-[7.5rem] font-normal"><span className='text-(--ciano)'>B</span>.A.R.</h1>
+                    <p className="">Biochemical Ads Robot</p>
+                    <img src={projeto} alt="Foto do Projeto" className="rounded-[100%] w-[20rem]" />
 
-                    <p>Transforme sua forma de estudar química com o BAR.</p>
-                    <p>Seu assistente inteligente para aprender Bioquímica com facilidade.</p>
+                    <p className="text-center">Transforme sua forma de estudar química com o BAR.</p>
+                    <p className="text-center">Seu assistente inteligente para aprender Bioquímica com facilidade.</p>
                     <Link to="/registro"><Button conteudo="Adquira já!" /></Link>
                 </section>
                 <section>
