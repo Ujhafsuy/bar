@@ -1,7 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
-
 :root{
+  /*HOME*/
   --ciano: #2ACDC5;
   --bg-header: #fff;
+  --bg-instruct: #2ACDC5;
+  --bg-robot: #010B14;
+  --bg-footer: #000;
+  --bg-nav: #01152A;
+  --font-color: #fff;
   --section-home-one: #2d2d2d;
+  --text-highlight: #757575;
+  --color-border: #989898;
+
+  --fontw-h2: 1.25rem;
 }
