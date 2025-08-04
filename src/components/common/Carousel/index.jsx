@@ -50,9 +50,9 @@ export function Carousel() {
                         </div>
                         <p>{item.description}</p>
                         <div>
-                            <img src="" alt="seta" />
+                            <img src="#" alt="seta" />
                             {ball()}
-                            <img src="" alt="seta" />
+                            <img src="#" alt="seta" />
                         </div>
                     </div>
                 )

@@ -1,8 +1,34 @@
 import { Header } from "../components/common/Header"
 import { Carousel } from "../components/common/Carousel"
 import Footer from "../components/common/Footer"
+import { useState } from "react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
+import { Card } from "../components/ui/card"
+import { Button } from "../components/ui/button"
+
+import { Star, Wifi, Bluetooth, Battery, Package2, ZoomIn, ShoppingCart, Info } from "lucide-react"
 
 function Materiais() {
+    const [selectedImage, setSelectedImage] = useState(0)
+    const [isZoomed, setIsZoomed] = useState(false)
+  
+    const productImages = [
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+      "/placeholder.svg?height=600&width=600",
+    ]
+  
+    const handleMouseMove = (e) => {
+      if (!isZoomed) return
+  
+      const { left, top, width, height } = e.currentTarget.getBoundingClientRect()
+      const x = ((e.clientX - left) / width) * 100
+      const y = ((e.clientY - top) / height) * 100
+  
+      e.currentTarget.style.backgroundPosition = `${x}% ${y}%`
+    }
     return(
         <div>
             <Header />
@@ -30,10 +56,9 @@ function Materiais() {
                             onMouseLeave={() => isZoomed && setIsZoomed(false)}
                             >
                             {!isZoomed && (
-                                <Image
+                                <img
                                 src={productImages[selectedImage] || "/placeholder.svg"}
                                 alt="Imagem do produto"
-                                fill
                                 className="object-cover"
                                 />
                             )}
@@ -51,7 +76,7 @@ function Materiais() {
                                 className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 ${selectedImage === index ? "border-blue-500" : "border-gray-700"}`}
                                 onClick={() => setSelectedImage(index)}
                                 >
-                                <Image
+                                <img
                                     src={img || "/placeholder.svg"}
                                     alt={`Miniatura ${index + 1}`}
                                     width={80}
