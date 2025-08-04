@@ -8,7 +8,7 @@ export function AccordionItem({ title, content }) {
   return (
     <div className="border-b py-[2rem]">
       <button
-        className="w-full flex justify-between items-center cursor-pointer text-[1.25rem]"
+        className="w-full flex justify-between items-center cursor-pointer text-[1.25rem] md:text-[2rem]"
         onClick={() => setOpen(!open)}
       >
         {title}
@@ -29,7 +29,7 @@ export function AccordionItem({ title, content }) {
             transition={{ duration: 0.3 }}
             className="overflow-hidden mt-2"
           >
-            <p className="text-[1rem]">{content}</p>
+            <p className="text-[1rem] md:text-[1.5rem]">{content}</p>
           </motion.div>
         )}
       </AnimatePresence>
