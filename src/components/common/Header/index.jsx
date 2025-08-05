@@ -27,7 +27,7 @@ export function Header() {
             <div className="md:hidden">
                 <div className="w-full flex items-center justify-between p-[1rem]">
                     {!openMenu ? <Menu onClick={abreMenu} className="cursor-pointer" /> : <X onClick={abreMenu} className="cursor-pointer" />}
-                    <h1 className="text-[2.125rem]"><span className='text-(--ciano)'>B</span>.A.R.</h1>
+                    <Link to="/"><h1 className="text-[2.125rem]"><span className='text-(--ciano)'>B</span>.A.R.</h1></Link>
                     {!openUser ? <User onClick={abreUser} className="rounded-[100%] w-[2.5rem] p-[0.5rem] h-[auto] cursor-pointer" /> : <User onClick={abreUser} className="bg-(--ciano) rounded-[100%] w-[2.5rem] p-[0.5rem] h-[auto] cursor-pointer" />}
                 </div>
                 <div className={`
@@ -75,7 +75,7 @@ export function Header() {
                     <nav className="flex flex-row bg-(--bg-header) w-full h-[5rem]">
                         <ol className="flex flex-row items-center justify-around p-[1rem] w-full">
                             <li>
-                                <h1 className="text-[2.125rem]"><span className='text-(--ciano)'>B</span>.A.R.</h1>
+                                <Link to="/"><h1 className="text-[2.125rem]"><span className='text-(--ciano)'>B</span>.A.R.</h1></Link>
                             </li>
                             <li className="">
                                 <Link to="/instruct">Instruções</Link>
@@ -102,7 +102,7 @@ export function Header() {
                                 <nav className="flex bg-(--bg-header) w-[15rem] h-[20rem] rounded-[1rem]">
                                     <ol className="flex flex-col justify-center gap-[2rem] p-[2rem] w-full">
                                         <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                            <Link to="/registro">Sign-up</Link>
+                                            <Link to="/register">Sign-up</Link>
                                         </li>
                                         <li className="py-[0.5rem] border-b border-b-(--color-border)">
                                             <Link to="/login">Log-in</Link>

@@ -12,7 +12,7 @@ export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/registro" element={<Registro />} />
+      <Route path="/register" element={<Registro />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signin" element={<Registro />} />
       <Route path="/instruct" element={<Instrucao />} />

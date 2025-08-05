@@ -15,13 +15,11 @@ function Home() {
     const [numCount, setNumCount] = useState(0)
     
     useEffect(() => {
-        setTimeout(() => {
-            if(numCount >= 1){
-                setNumCount(0)
-            } else {
-                setNumCount(numCount + 1)
-            }
-        }, 5000)
+        const interval = setInterval(() => {
+            setNumCount(prev => (prev + 1) % pictures.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
     })
 
     return (
@@ -71,7 +69,7 @@ function Home() {
 
                         <AnimatePresence mode="wait">
                             <motion.img
-                                key={numCount}
+                                key={pictures[numCount]}
                                 src={pictures[numCount]}
                                 alt="Fotos produto"
                                 initial={{ opacity: 0.5 }}
