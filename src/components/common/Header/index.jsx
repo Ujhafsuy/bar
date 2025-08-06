@@ -2,7 +2,7 @@ import { Menu, User, X } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-export function Header() {
+export function Header(classNameh) {
     const [openMenu, setOpenMenu] = useState(false)
     const [openUser, setOpenUser] = useState(false)
 
@@ -23,7 +23,7 @@ export function Header() {
     }
 
     return(
-        <header className="fixed z-[10] bg-(--bg-header) w-full">
+        <header className={`fixed z-[10] bg-(--bg-header) w-full ${classNameh}`}>
             <div className="md:hidden">
                 <div className="w-full flex items-center justify-between p-[1rem]">
                     {!openMenu ? <Menu onClick={abreMenu} className="cursor-pointer" /> : <X onClick={abreMenu} className="cursor-pointer" />}

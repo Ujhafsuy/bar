@@ -20,6 +20,10 @@
   /*LOGIN/REGISTRO*/
   --ciano-bt: #2ACDC5;
 
+  /*INSTRUÇÃO*/
+  --bg-instr: #01152A;
+  --bg-itens: #0A233C;
+  --color-instr: #fff;
 
   /*CONTROLE*/
   --bg-button-active: #06b6d4;
