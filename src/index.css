@@ -34,6 +34,11 @@
   --text-hover: #fff;
 
   --bg-nav-controle: #1e293b;
+  --bg-card-user: #334155;
+  --border-color-controll: #334155;
+
+  --bg-search: #0f172a;
+  --border-search: #475569;
 
     /*      navy: {
           50: "#f8fafc",
