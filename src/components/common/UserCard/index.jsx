@@ -15,13 +15,13 @@ export function MobileUserCard({ user, onView, onEdit, onDelete }) {
 
       <div className="flex items-center justify-center gap-7">
         <span className="px-2 py-1 bg-cyan-500 text-white text-sm rounded-full">{user.status}</span>
-        <button>
+        <button onClick={() => onView(user)}>
           <Eye className="h-6 w-6 text-gray-400 hover:text-white" />
         </button>
-        <button>
+        <button onClick={() => onEdit(user)}>
           <Edit className="h-6 w-6 text-gray-400 hover:text-white" />
         </button>
-        <button>
+        <button onClick={() => onDelete(user)}>
           <Trash2 className="h-6 w-6 text-gray-400 hover:text-white" />
         </button>
       </div>

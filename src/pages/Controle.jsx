@@ -6,6 +6,7 @@ import { ButtonNav } from "../components/common/Button"
 import { Monitoramento } from "../components/common/Monitoramento"
 import { Clock, Users, Search } from "lucide-react"
 import { MobileUserCard } from "../components/common/UserCard"
+import { UserModal } from "../components/common/Modals/UserModal"
 
 export function Controle() {
     const testUsers = [
@@ -32,8 +33,25 @@ export function Controle() {
         },
     ] /* Dados de teste, substituir pelos dados do Back-End */ 
 
-    const [selectedUser, setSelectedUser] = useState(null)
     const [termoBusca, setTermoBusca] = useState("")
+
+    {/* Modal de usuário */}
+    const [userModalOpen, setUserModalOpen] = useState(false)
+    const [modalMode, setModalMode] = useState("view") // 'view' ou 'edit'
+    const [selectedUser, setSelectedUser] = useState(null)
+    const [searchTerm, setSearchTerm] = useState("")
+    const [activeTab, setActiveTab] = useState("items")
+
+    const openUserModal = (mode, user) => {
+        setModalMode(mode)
+        setSelectedUser(user)
+        setUserModalOpen(true)
+    }
+
+    const handleUserSubmit = (updatedUserData) => {
+        console.log("Salvar usuário:", updatedUserData)
+        setUserModalOpen(false)
+    }
 
     const filteredUsers = testUsers.filter((user) => {
         const term = (termoBusca || "").toLowerCase();
@@ -82,14 +100,23 @@ export function Controle() {
                                 <MobileUserCard
                                 key={user.id}
                                 user={user}
-                                onView={(user) => handleOpenUserModal("view", user)}
-                                onEdit={(user) => handleOpenUserModal("edit", user)}
-                                onDelete={(id) => console.log("Delete user:", id)}
+                                onView={() => openUserModal("view", user)}
+                                onEdit={() => openUserModal("edit", user)}
+                                onDelete={() => console.log("Excluir usuário:", user.id)}
                                 />
                             ))}
                             </div>
                         </div>
                     </div>
+                    {selectedUser && (
+                        <UserModal
+                            isOpen={userModalOpen}
+                            onClose={() => setUserModalOpen(false)}
+                            mode={modalMode}
+                            user={selectedUser}
+                            onSubmit={modalMode === "edit" ? handleUserSubmit : undefined}
+                        />
+                        )}
                 </section>
             </main>
             <Footer />

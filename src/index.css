@@ -40,6 +40,9 @@
   --bg-search: #0f172a;
   --border-search: #475569;
 
+  --bg-modal-off: #1e293b;
+  --test: red;
+
     /*      navy: {
           50: "#f8fafc",
           100: "#f1f5f9",
