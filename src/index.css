@@ -20,8 +20,11 @@
   /*LOGIN/REGISTRO*/
   --ciano-bt: #2ACDC5;
 
+  /*DEFAULT*/
+  --bg-normal-pages: #01152A;
+  --text-normal-color: #fff;
+
   /*INSTRUÇÃO*/
-  --bg-instr: #01152A;
   --bg-itens: #0A233C;
   --color-instr: #fff;
 

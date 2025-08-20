@@ -7,7 +7,7 @@ import { Menu, User, Play, Target, Brain, Clock, TrendingUp, CheckCircle } from 
 
 function Instrucao() {
     return (
-        <div id="content" className="bg-(--bg-instr)">
+        <div id="content" className="bg-(--bg-normal-pages)">
             <Header />
             <main className="flex flex-col items-center justify-center px-4 py-[8rem] max-w-4xl mx-auto">
                 <section className="text-center mb-12">

@@ -1,18 +1,67 @@
 import { Header } from "../components/common/Header"
 import { Carousel } from "../components/common/Carousel"
 import Footer from "../components/common/Footer"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
 import { Card } from "../components/ui/card"
 import { Button } from "../components/ui/button"
 
-import { Star, Wifi, Bluetooth, Battery, Package2, ZoomIn, ShoppingCart, Info } from "lucide-react"
+import { Star, Wifi, Bluetooth, Battery, Package2, ZoomIn, ShoppingCart, Info, ChevronLeft, ChevronRight } from "lucide-react"
 
 function Materiais() {
     const [selectedImage, setSelectedImage] = useState(0)
     const [isZoomed, setIsZoomed] = useState(false)
-  
+    const materials = [
+        {
+          id: 1,
+          name: "ESP 32",
+          description: "Responsável pelo processamento e conexão do projeto",
+          image: "/esp32-board.png",
+        },
+        {
+          id: 2,
+          name: "ESP 32 DevKit",
+          description: "Placa de desenvolvimento com WiFi e Bluetooth integrados",
+          image: "/esp32-dev-board.png",
+        },
+        {
+          id: 3,
+          name: "ESP 32 WiFi Module",
+          description: "Módulo compacto para conectividade sem fio",
+          image: "/esp32-wifi-module.png",
+        },
+        {
+          id: 4,
+          name: "Sensor Ultrassônico",
+          description: "Sensor de distância para detecção de obstáculos",
+          image: "/ultrasonic-sensor-hc-sr04.png",
+        },
+        {
+          id: 5,
+          name: "Servo Motor",
+          description: "Motor de precisão para movimentação controlada",
+          image: "/servo-motor-sg90.png",
+        },
+        {
+          id: 6,
+          name: "Display OLED",
+          description: "Tela para exibição de informações do sistema",
+          image: "/oled-display-128x64.png",
+        },
+        {
+          id: 7,
+          name: "Bateria Li-Po",
+          description: "Fonte de energia recarregável de alta capacidade",
+          image: "/placeholder-uxoah.png",
+        },
+        {
+          id: 8,
+          name: "Câmera ESP32-CAM",
+          description: "Módulo de câmera para captura de imagens",
+          image: "/esp32-cam-module.png",
+        },
+      ]
     const productImages = [
       "/placeholder.svg?height=600&width=600",
       "/placeholder.svg?height=600&width=600",
@@ -29,260 +78,220 @@ function Materiais() {
   
       e.currentTarget.style.backgroundPosition = `${x}% ${y}%`
     }
+
+    const [currentIndex, setCurrentIndex] = useState(0)
+  const [itemsPerPage, setItemsPerPage] = useState(3)
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerPage(1) // Mobile: 1 item
+      } else if (window.innerWidth < 1024) {
+        setItemsPerPage(2) // Tablet: 2 items
+      } else {
+        setItemsPerPage(3) // Desktop: 3 items
+      }
+    }
+
+    handleResize() // Executar na montagem
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
+
+  useEffect(() => {
+    setCurrentIndex(0)
+  }, [itemsPerPage])
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + itemsPerPage >= materials.length ? 0 : prev + itemsPerPage))
+  }
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? Math.max(0, materials.length - itemsPerPage) : Math.max(0, prev - itemsPerPage),
+    )
+  }
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index * itemsPerPage)
+  }
+
+  const visibleMaterials = materials.slice(currentIndex, currentIndex + itemsPerPage)
+  const totalPages = Math.ceil(materials.length / itemsPerPage)
+  const currentPage = Math.floor(currentIndex / itemsPerPage)
     return(
         <div>
             <Header />
-            <main>
-                <section>
-                    <h1>LISTA DE <br /> MATERIAIS</h1>
-                    <p> O B.A.R foi construido com componentes separados e da melhor qualidade.</p>
-                    <Carousel />
-                </section>
-                <section>
-                <div className="min-h-screen bg-gray-900 text-white">
-                    <div className="container mx-auto px-4 py-8">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Galeria de imagens (Esquerda) */}
-                        <div className="space-y-4">
-                            <div
-                            className={`relative w-full aspect-square rounded-lg overflow-hidden border-2 ${isZoomed ? "cursor-zoom-out" : "cursor-zoom-in"} border-blue-500`}
-                            style={{
-                                backgroundImage: isZoomed ? `url(${productImages[selectedImage]})` : "none",
-                                backgroundSize: isZoomed ? "200%" : "auto",
-                                backgroundRepeat: "no-repeat",
-                            }}
-                            onClick={() => setIsZoomed(!isZoomed)}
-                            onMouseMove={handleMouseMove}
-                            onMouseLeave={() => isZoomed && setIsZoomed(false)}
-                            >
-                            {!isZoomed && (
-                                <img
-                                src={productImages[selectedImage] || "/placeholder.svg"}
-                                alt="Imagem do produto"
-                                className="object-cover"
-                                />
-                            )}
-                            {!isZoomed && (
-                                <div className="absolute bottom-2 right-2 bg-blue-600 p-2 rounded-full">
-                                <ZoomIn className="h-5 w-5" />
-                                </div>
-                            )}
-                            </div>
+            <main className="pt-[6rem] bg-(--bg-normal-pages) text-(--text-normal-color)">
+                <section className="py-16 px-4">
+                    <div className="max-w-6xl mx-auto">
+                        <div className="text-center mb-12">
+                        <h1 className="text-4xl font-bold text-white mb-4">LISTA DE MATERIAIS</h1>
+                        <p className="text-slate-400 text-lg">
+                            O B.A.R foi construído com componentes separados
+                            <br />e da melhor qualidade.
+                        </p>
+                        </div>
 
-                            <div className="flex space-x-2 overflow-x-auto pb-2">
-                            {productImages.map((img, index) => (
-                                <button
-                                key={index}
-                                className={`flex-shrink-0 w-20 h-20 rounded-md overflow-hidden border-2 ${selectedImage === index ? "border-blue-500" : "border-gray-700"}`}
-                                onClick={() => setSelectedImage(index)}
-                                >
+                        <div className="relative">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                            {visibleMaterials.map((material) => (
+                            <Card key={material.id} className="bg-slate-800 border-slate-700 overflow-hidden">
+                                <div className="aspect-square bg-slate-200 rounded-t-lg">
                                 <img
-                                    src={img || "/placeholder.svg"}
-                                    alt={`Miniatura ${index + 1}`}
-                                    width={80}
-                                    height={80}
-                                    className="object-cover w-full h-full"
+                                    src={material.image || "/placeholder.svg"}
+                                    alt={material.name}
+                                    className="w-full h-full object-cover"
                                 />
-                                </button>
+                                </div>
+                                <div className="p-4">
+                                <h3 className="text-white font-semibold text-lg mb-2">{material.name}</h3>
+                                <p className="text-slate-400 text-sm">{material.description}</p>
+                                </div>
+                            </Card>
+                            ))}
+                        </div>
+                        </div>
+
+                        <div className="flex justify-center items-center gap-4">
+                        <Button variant="ghost" size="sm" onClick={prevSlide} className="text-slate-400 hover:text-white p-1">
+                            <ChevronLeft className="w-5 h-5" />
+                        </Button>
+
+                        <div className="flex gap-2">
+                            {Array.from({ length: totalPages }).map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => goToSlide(index)}
+                                className={`w-2 h-2 rounded-full transition-colors ${
+                                index === currentPage ? "bg-white" : "bg-slate-600 hover:bg-slate-500"
+                                }`}
+                            />
+                            ))}
+                        </div>
+
+                        <Button variant="ghost" size="sm" onClick={nextSlide} className="text-slate-400 hover:text-white p-1">
+                            <ChevronRight className="w-5 h-5" />
+                        </Button>
+                        </div>
+                    </div>
+                </section>
+                <section className="py-16 px-4 bg-slate-800">
+                    <div className="max-w-6xl mx-auto">
+                        <h2 className="text-4xl font-bold text-white text-center mb-12">PROJETO COMPLETO</h2>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                        {/* Product Images */}
+                        <div className="space-y-4">
+                            <Card className="bg-slate-700 border-slate-600 p-6">
+                            <div className="aspect-square bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center">
+                                <img
+                                src="/cute-white-robot.png"
+                                alt="Robô B.A.R"
+                                className="w-full h-full object-cover rounded-lg"
+                                />
+                            </div>
+                            </Card>
+
+                            {/* Thumbnail images */}
+                            <div className="flex gap-2">
+                            {[1, 2, 3].map((i) => (
+                                <Card key={i} className="bg-slate-700 border-slate-600 p-2 flex-1">
+                                <div className="aspect-square bg-gradient-to-br from-cyan-400 to-blue-600 rounded">
+                                    <img
+                                    src={`/robot-view.png?height=80&width=80&query=robot view ${i}`}
+                                    alt={`Vista ${i}`}
+                                    className="w-full h-full object-cover rounded"
+                                    />
+                                </div>
+                                </Card>
                             ))}
                             </div>
                         </div>
 
-                        {/* Informações do produto (Centro) */}
+                        {/* Product Information */}
                         <div className="space-y-6">
-                            <h1 className="text-3xl md:text-4xl font-bold text-center md:text-left">PROJETO COMPLETO</h1>
+                            <Tabs defaultValue="description" className="w-full">
+                            <TabsList className="grid w-full grid-cols-3 bg-slate-700">
+                                <TabsTrigger
+                                value="description"
+                                className="data-[state=active]:bg-white data-[state=active]:text-slate-900"
+                                >
+                                Descrição
+                                </TabsTrigger>
+                                <TabsTrigger
+                                value="specifications"
+                                className="data-[state=active]:bg-white data-[state=active]:text-slate-900"
+                                >
+                                Especificações
+                                </TabsTrigger>
+                                <TabsTrigger
+                                value="reviews"
+                                className="data-[state=active]:bg-white data-[state=active]:text-slate-900"
+                                >
+                                Avaliações
+                                </TabsTrigger>
+                            </TabsList>
 
-                            <div className="bg-gray-800 p-6 rounded-lg">
-                            <h2 className="text-xl font-semibold mb-4">Descrição do Produto</h2>
-                            <p className="text-gray-300">
-                                Este projeto completo oferece uma solução integrada com tecnologia de ponta e design moderno.
-                                Desenvolvido com materiais de alta qualidade, garante durabilidade e desempenho excepcional para atender
-                                às suas necessidades.
+                            <TabsContent value="description" className="mt-6">
+                                <div className="text-slate-300 space-y-4">
+                                <p>
+                                    Este projeto completo oferece uma solução integrada com tecnologia de ponta e design inovador.
+                                    Desenvolvido com materiais de alta qualidade, garante durabilidade e desempenho excepcional para
+                                    atender às suas necessidades.
+                                </p>
+                                <p>
+                                    Características principais incluem conectividade avançada, processamento eficiente e interface
+                                    intuitiva para uma experiência completa.
+                                </p>
+                                </div>
+                            </TabsContent>
+
+                            <TabsContent value="specifications" className="mt-6">
+                                <div className="text-slate-300 space-y-2">
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                    <span className="font-semibold">Processador:</span>
+                                    <p className="text-sm">ESP32 Dual Core</p>
+                                    </div>
+                                    <div>
+                                    <span className="font-semibold">Conectividade:</span>
+                                    <p className="text-sm">WiFi + Bluetooth</p>
+                                    </div>
+                                    <div>
+                                    <span className="font-semibold">Alimentação:</span>
+                                    <p className="text-sm">5V USB / Bateria</p>
+                                    </div>
+                                    <div>
+                                    <span className="font-semibold">Dimensões:</span>
+                                    <p className="text-sm">15 x 12 x 8 cm</p>
+                                    </div>
+                                </div>
+                                </div>
+                            </TabsContent>
+
+                            <TabsContent value="reviews" className="mt-6">
+                                <div className="text-slate-300 space-y-4">
+                                <div className="border-l-4 border-cyan-400 pl-4">
+                                    <p className="italic">"Projeto incrível! Superou todas as expectativas."</p>
+                                    <p className="text-sm text-slate-400 mt-2">- João Silva</p>
+                                </div>
+                                <div className="border-l-4 border-cyan-400 pl-4">
+                                    <p className="italic">"Qualidade excepcional e fácil de usar."</p>
+                                    <p className="text-sm text-slate-400 mt-2">- Maria Santos</p>
+                                </div>
+                                </div>
+                            </TabsContent>
+                            </Tabs>
+
+                            <div className="bg-slate-700 p-4 rounded-lg">
+                            <p className="text-slate-300 text-sm">
+                                Este valor inclui eletrônicos, estrutura física, licença de uso do software básico.
                             </p>
                             </div>
-
-                            <div className="mt-6">
-                            <Tabs defaultValue="descricao" className="w-full">
-                                <TabsList className="grid grid-cols-4 mb-4">
-                                <TabsTrigger value="descricao">Descrição</TabsTrigger>
-                                <TabsTrigger value="especificacoes">Especificações</TabsTrigger>
-                                <TabsTrigger value="avaliacoes">Avaliações</TabsTrigger>
-                                <TabsTrigger value="faq">FAQ</TabsTrigger>
-                                </TabsList>
-                                <TabsContent value="descricao" className="bg-gray-800 p-4 rounded-lg">
-                                <h3 className="font-semibold mb-2">Sobre este produto</h3>
-                                <p className="text-gray-300">
-                                    O PROJETO COMPLETO representa o que há de mais avançado em tecnologia e design. Com conectividade
-                                    sem fio de última geração, este produto foi desenvolvido para proporcionar uma experiência de
-                                    usuário excepcional. Fabricado com material PLA de alta qualidade, oferece durabilidade e acabamento
-                                    premium.
-                                </p>
-                                <p className="text-gray-300 mt-2">
-                                    Sua bateria de longa duração garante até 5 horas de uso contínuo, ideal para projetos que exigem
-                                    mobilidade e confiabilidade. O design minimalista e moderno se adapta perfeitamente a qualquer
-                                    ambiente.
-                                </p>
-                                </TabsContent>
-                                <TabsContent value="especificacoes" className="bg-gray-800 p-4 rounded-lg">
-                                <ul className="space-y-2 text-gray-300">
-                                    <li>• Material: PLA de alta resistência</li>
-                                    <li>• Conectividade: Wi-Fi 6 e Bluetooth 5.2</li>
-                                    <li>• Bateria: Autonomia de 5 horas</li>
-                                    <li>• Dimensões: 30cm x 20cm x 15cm</li>
-                                    <li>• Peso: 1,2kg</li>
-                                    <li>• Garantia: 12 meses</li>
-                                </ul>
-                                </TabsContent>
-                                <TabsContent value="avaliacoes" className="bg-gray-800 p-4 rounded-lg">
-                                <div className="space-y-4">
-                                    <div className="flex items-center">
-                                    <div className="flex">
-                                        {[1, 2, 3, 4, 5].map((star) => (
-                                        <Star key={star} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-                                        ))}
-                                    </div>
-                                    <span className="ml-2 text-gray-300">4.8 de 5 (120 avaliações)</span>
-                                    </div>
-
-                                    <Accordion type="single" collapsible className="w-full">
-                                    <AccordionItem value="review-1">
-                                        <AccordionTrigger>
-                                        <div className="flex items-center">
-                                            <div className="flex">
-                                            {[1, 2, 3, 4, 5].map((star) => (
-                                                <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                                            ))}
-                                            </div>
-                                            <span className="ml-2">Maria S.</span>
-                                        </div>
-                                        </AccordionTrigger>
-                                        <AccordionContent>
-                                        <p className="text-gray-300">
-                                            Produto excelente! Superou todas as minhas expectativas. A bateria dura realmente as 5 horas
-                                            prometidas e a qualidade do material é impressionante.
-                                        </p>
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                    <AccordionItem value="review-2">
-                                        <AccordionTrigger>
-                                        <div className="flex items-center">
-                                            <div className="flex">
-                                            {[1, 2, 3, 4].map((star) => (
-                                                <Star key={star} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                                            ))}
-                                            <Star className="h-4 w-4 text-gray-400" />
-                                            </div>
-                                            <span className="ml-2">João P.</span>
-                                        </div>
-                                        </AccordionTrigger>
-                                        <AccordionContent>
-                                        <p className="text-gray-300">
-                                            Muito bom, mas poderia ter um manual mais detalhado. De qualquer forma, a conectividade é
-                                            excelente e o design é muito bonito.
-                                        </p>
-                                        </AccordionContent>
-                                    </AccordionItem>
-                                    </Accordion>
-                                </div>
-                                </TabsContent>
-                                <TabsContent value="faq" className="bg-gray-800 p-4 rounded-lg">
-                                <Accordion type="single" collapsible className="w-full">
-                                    <AccordionItem value="faq-1">
-                                    <AccordionTrigger>Como funciona a garantia?</AccordionTrigger>
-                                    <AccordionContent>
-                                        <p className="text-gray-300">
-                                        A garantia é de 12 meses contra defeitos de fabricação. Para acioná-la, basta entrar em
-                                        contato com nosso suporte ao cliente com a nota fiscal em mãos.
-                                        </p>
-                                    </AccordionContent>
-                                    </AccordionItem>
-                                    <AccordionItem value="faq-2">
-                                    <AccordionTrigger>O produto é resistente à água?</AccordionTrigger>
-                                    <AccordionContent>
-                                        <p className="text-gray-300">
-                                        O produto possui resistência a respingos (IPX4), mas não é recomendado submergi-lo ou expô-lo
-                                        a grandes quantidades de água.
-                                        </p>
-                                    </AccordionContent>
-                                    </AccordionItem>
-                                    <AccordionItem value="faq-3">
-                                    <AccordionTrigger>Como recarregar a bateria?</AccordionTrigger>
-                                    <AccordionContent>
-                                        <p className="text-gray-300">
-                                        Utilize o carregador USB-C incluso na embalagem. O tempo médio de recarga completa é de
-                                        aproximadamente 2 horas.
-                                        </p>
-                                    </AccordionContent>
-                                    </AccordionItem>
-                                </Accordion>
-                                </TabsContent>
-                            </Tabs>
-                            </div>
-                        </div>
-
-                        {/* Especificações técnicas e preço (Direita) */}
-                        <div className="space-y-6">
-                            <Card className="bg-gray-800 border-gray-700">
-                            <div className="p-6">
-                                <h2 className="text-xl font-semibold mb-4">Especificações Técnicas</h2>
-                                <div className="grid grid-cols-2 gap-4">
-                                <div className="flex items-center space-x-3">
-                                    <div className="bg-blue-600 p-2 rounded-full">
-                                    <Wifi className="h-5 w-5" />
-                                    </div>
-                                    <span>Wi-Fi</span>
-                                </div>
-                                <div className="flex items-center space-x-3">
-                                    <div className="bg-blue-600 p-2 rounded-full">
-                                    <Bluetooth className="h-5 w-5" />
-                                    </div>
-                                    <span>Bluetooth</span>
-                                </div>
-                                <div className="flex items-center space-x-3">
-                                    <div className="bg-blue-600 p-2 rounded-full">
-                                    <Package2 className="h-5 w-5" />
-                                    </div>
-                                    <span>Material PLA</span>
-                                </div>
-                                <div className="flex items-center space-x-3">
-                                    <div className="bg-blue-600 p-2 rounded-full">
-                                    <Battery className="h-5 w-5" />
-                                    </div>
-                                    <span>5h Autonomia</span>
-                                </div>
-                                </div>
-                            </div>
-                            </Card>
-
-                            <Card className="bg-gray-800 border-gray-700">
-                            <div className="p-6 space-y-4">
-                                <div className="flex items-center justify-between">
-                                <span className="text-gray-300">Preço:</span>
-                                <span className="text-3xl font-bold text-blue-500">R$ 999,99</span>
-                                </div>
-
-                                <div className="space-y-3">
-                                <Button className="w-full bg-green-600 hover:bg-green-700 text-white py-6 text-lg">
-                                    <ShoppingCart className="mr-2 h-5 w-5" />
-                                    Adicionar ao carrinho
-                                </Button>
-
-                                <Button variant="outline" className="w-full border-blue-500 text-blue-400 hover:bg-blue-900/20">
-                                    <Info className="mr-2 h-4 w-4" />
-                                    Ver mais detalhes
-                                </Button>
-                                </div>
-
-                                <div className="pt-4 border-t border-gray-700">
-                                <p className="text-sm text-gray-400">Frete grátis para todo o Brasil</p>
-                                <p className="text-sm text-gray-400 mt-1">Entrega estimada: 5-7 dias úteis</p>
-                                </div>
-                            </div>
-                            </Card>
                         </div>
                         </div>
                     </div>
-                </div>
                 </section>
             </main>
             <Footer />

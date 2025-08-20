@@ -41,10 +41,10 @@ export function Header(classNameh) {
                                     <Link to="/instruct">Instruções</Link>
                                 </li>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                    <Link to="/controlusers">Admin</Link>
+                                    <Link to="/materials">Materiais</Link>
                                 </li>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                    <Link to="/materials">Materiais</Link>
+                                    <Link to="/bio">Referências</Link>
                                 </li>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
                                     <Link to="/">Jogo</Link>
@@ -81,10 +81,10 @@ export function Header(classNameh) {
                                 <Link to="/instruct">Instruções</Link>
                             </li>
                             <li className="">
-                                <Link to="/controlusers">Admin</Link>
+                                <Link to="/materials">Materiais</Link>
                             </li>
                             <li className="">
-                                <Link to="/materials">Materiais</Link>
+                                <Link to="/bio">Referências</Link>
                             </li>
                             <li className="">
                                 <Link to="/">Jogo</Link>

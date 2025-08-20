@@ -95,10 +95,10 @@ function Referencias() {
     return(
         <div>
             <Header />
-            <main>
-                <section>
-                    <h1>Referências Bibliográficas</h1>
-                    <p>Artigos científicos e publicações que fundamentaram o desenvolvimento deste projeto, fornecendo base teórica e metodológica para as soluções implementadas.</p>
+            <main className="py-[6rem] bg-(--bg-normal-pages) text-(--text-normal-color)">
+                <section className="h-[50%]">
+                    <h1 className="font-bold text-[4rem]">Referências Bibliográficas</h1>
+                    <p className="font-light text-[1rem]">Artigos científicos e publicações que fundamentaram o desenvolvimento deste projeto, fornecendo base teórica e metodológica para as soluções implementadas.</p>
                 </section>
                 <section>
                 <ScrollVelocity
@@ -107,11 +107,11 @@ function Referencias() {
                     className="custom-scroll-text"
                     />
 
-                <div className="space-y-8">
+                <div className="space-y-8 flex flex-col items-center">
                 {referencia.map((ref, index) => (
                     <div
                     key={ref.id}
-                    className="bg-white border-2 border-gray-200 shadow-lg hover:shadow-xl transition-all duration-300 hover:border-orange-300"
+                    className="bg-(--bg-robot) shadow-lg hover:shadow-xl transition-all duration-300 w-[80%]"
                     >
                     <div className="pb-4">
                         <div className="flex items-start justify-between gap-4">

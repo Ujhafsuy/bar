@@ -6,7 +6,6 @@ import Materiais from "../pages/Materiais"
 import Time from "../pages/Time"
 import Referencias from "../pages/Referencias"
 import Users from "../pages/Users"
-import { Controle, ControleItens } from "../pages/Controle"
 
 export default function AppRoutes() {
   return (
@@ -20,8 +19,6 @@ export default function AppRoutes() {
       <Route path="/team" element={<Time/>} />
       <Route path="/bio" element={<Referencias/>} />
       <Route path="/user" element={<Users/>} />
-      <Route path="/controlusers" element={<Controle />}/>
-      <Route path="/controlitens" element={<ControleItens />}/>
     </Routes>
   )
 }
