@@ -96,7 +96,7 @@ function Referencias() {
         <div>
             <Header />
             <main className="py-[6rem] bg-(--bg-normal-pages) text-(--text-normal-color)">
-                <section className="h-[50%]">
+                <section className="">
                     <h1 className="font-bold text-[4rem]">Referências Bibliográficas</h1>
                     <p className="font-light text-[1rem]">Artigos científicos e publicações que fundamentaram o desenvolvimento deste projeto, fornecendo base teórica e metodológica para as soluções implementadas.</p>
                 </section>
