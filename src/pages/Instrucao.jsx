@@ -4,6 +4,7 @@ import Footer from "../components/common/Footer"
 import { Card, CardContent } from "../components/ui/card"
 import { Button } from "../components/ui/button"
 import { Menu, User, Play, Target, Brain, Clock, TrendingUp, CheckCircle } from 'lucide-react'
+import { motion, AnimatePresence } from "framer-motion";
 
 function Instrucao() {
     return (
@@ -11,10 +12,17 @@ function Instrucao() {
             <Header />
             <main className="flex flex-col items-center justify-center px-4 py-[8rem] max-w-4xl mx-auto">
                 <section className="text-center mb-12">
-                    <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">INSTRUÇÕES</h1>
+                    <h1 className="text-3xl md:text-5xl font-bold text-white mb-2">INSTRUÇÕES</h1>
                     <h2 className="text-blue-200 text-lg">Como utilizar o B.A.R.</h2>
                 </section>
                 <section className="mb-16 flex flex-col">
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
+                className="relative w-full"
+                >
                     <div className="flex items-center gap-3 mb-6">
                         <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
                         ?
@@ -23,7 +31,14 @@ function Instrucao() {
                         O que vem na caixa?
                         </h2>
                     </div>
-
+                </motion.div>
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
+                className="relative w-full"
+                >
                     <div className="grid md:grid-cols-2 gap-6 mb-[6rem]">
                         <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                         <CardContent className="p-4">
@@ -70,7 +85,14 @@ function Instrucao() {
                         </div>
                         </div>
                     </div>
-
+                </motion.div>
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
+                className="relative w-full"
+                >
                     <div className="mb-16">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
@@ -112,7 +134,14 @@ function Instrucao() {
                             </div>
                         </div>
                     </div>
-
+                </motion.div>
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
+                className="relative w-full"
+                >
                     <div className="w-full flex-shrink-0 mb-[6rem]">
                         <div className="flex items-center gap-3 mb-6">
                         <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
@@ -216,7 +245,14 @@ function Instrucao() {
                         </div>
                         </div>
                     </div>
-
+                </motion.div>
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
+                className="relative w-full"
+                >
                     <div className="mb-16">
                         <div className="flex items-center gap-3 mb-6">
                             <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
@@ -285,28 +321,37 @@ function Instrucao() {
                             </div>
                         </div>
                     </div>
+                </motion.div>
                 </section>
-                <section className="mb-16 flex flex-col w-full">
-                    <div className="text-center">
-                        <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">
-                            VÍDEO PASSO A PASSO
-                        </h2>
-                        
-                        <Card className="bg-white/10 backdrop-blur-sm border-white/20 max-w-3xl mx-auto">
-                            <CardContent className="p-6">
-                            <div className="aspect-video bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg flex items-center justify-center relative overflow-hidden">
-                                <Button 
-                                size="lg" 
-                                className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/30"
-                                >
-                                <Play className="w-8 h-8 text-white ml-1" />
-                                </Button>
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                            </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </section>
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
+                className="relative w-full"
+                >
+                    <section className="mb-16 flex flex-col w-full">
+                        <div className="text-center">
+                            <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">
+                                VÍDEO PASSO A PASSO
+                            </h2>
+                            
+                            <Card className="bg-white/10 backdrop-blur-sm border-white/20 max-w-3xl mx-auto">
+                                <CardContent className="p-6">
+                                <div className="aspect-video bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg flex items-center justify-center relative overflow-hidden">
+                                    <Button 
+                                    size="lg" 
+                                    className="w-16 h-16 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-white/30"
+                                    >
+                                    <Play className="w-8 h-8 text-white ml-1" />
+                                    </Button>
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                                </div>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </section>
+                </motion.div>
             </main>
             <Footer />
         </div>

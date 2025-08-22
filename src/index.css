@@ -28,6 +28,12 @@
   --bg-itens: #0A233C;
   --color-instr: #fff;
 
+  /*REFERÊNCIAS*/
+  --bg-section: #2E7476;
+  --bg-count: #85EFAC;
+  --bg-article: #0A233C;
+  --bg-info: #4A89D5;
+
     --radius: 0.625rem;
 
     --background: oklch(1 0 0);

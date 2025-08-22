@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../components/ui/accordion"
 import { Card } from "../components/ui/card"
 import { Button } from "../components/ui/button"
+import { motion, AnimatePresence } from "framer-motion";
 
 import { Star, Wifi, Bluetooth, Battery, Package2, ZoomIn, ShoppingCart, Info, ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -123,10 +124,17 @@ function Materiais() {
         <div>
             <Header />
             <main className="pt-[6rem] bg-(--bg-normal-pages) text-(--text-normal-color)">
+            <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
+                className="relative w-full"
+                >
                 <section className="py-16 px-4">
                     <div className="max-w-6xl mx-auto">
                         <div className="text-center mb-12">
-                        <h1 className="text-4xl font-bold text-white mb-4">LISTA DE MATERIAIS</h1>
+                        <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">LISTA DE MATERIAIS</h1>
                         <p className="text-slate-400 text-lg">
                             O B.A.R foi construído com componentes separados
                             <br />e da melhor qualidade.
@@ -176,7 +184,15 @@ function Materiais() {
                         </div>
                     </div>
                 </section>
-                <section className="py-16 px-4 bg-slate-800">
+                </motion.div>
+                <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
+                className="relative w-full"
+                >
+                <section className="py-16 px-4 bg-(--bg-normal-pages)">
                     <div className="max-w-6xl mx-auto">
                         <h2 className="text-4xl font-bold text-white text-center mb-12">PROJETO COMPLETO</h2>
 
@@ -293,6 +309,7 @@ function Materiais() {
                         </div>
                     </div>
                 </section>
+                </motion.div>
             </main>
             <Footer />
         </div>
