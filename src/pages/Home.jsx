@@ -13,7 +13,7 @@ import { useEffect, useState } from "react"
 function Home() {
     const pictures = [projeto, projeto2]
     const [numCount, setNumCount] = useState(0)
-    
+
     useEffect(() => {
         const interval = setInterval(() => {
             setNumCount(prev => (prev + 1) % pictures.length);
@@ -23,7 +23,7 @@ function Home() {
     })
 
     return (
-        <>
+        <div>
             <Header />
             <main className="font-light">
             <motion.div
@@ -109,7 +109,7 @@ function Home() {
             </motion.div>
             </main>
             <Footer />
-        </>
+        </div>
     )
 }
 

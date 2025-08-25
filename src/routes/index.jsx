@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Router, useLocation } from "react-router-dom"
+import ScrollToTop from "../components/common/ScrollToTop/index"
 import Home from "../pages/Home"
 import {Registro, Login} from "../pages/Registro"
 import Instrucao from "../pages/Instrucao"
@@ -8,17 +9,21 @@ import Referencias from "../pages/Referencias"
 import Users from "../pages/Users"
 
 export default function AppRoutes() {
+  const location = useLocation()
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/register" element={<Registro />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/signin" element={<Registro />} />
-      <Route path="/instruct" element={<Instrucao />} />
-      <Route path="/materials" element={<Materiais/>} />
-      <Route path="/team" element={<Time/>} />
-      <Route path="/bio" element={<Referencias/>} />
-      <Route path="/user" element={<Users/>} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Registro />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signin" element={<Registro />} />
+        <Route path="/instruct" element={<Instrucao />} />
+        <Route path="/materials" element={<Materiais/>} />
+        <Route path="/team" element={<Time/>} />
+        <Route path="/bio" element={<Referencias/>} />
+        <Route path="/user" element={<Users/>} />
+      </Routes>
+    </>
   )
 }
