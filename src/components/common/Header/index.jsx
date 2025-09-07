@@ -1,4 +1,4 @@
-import { Menu, User, X } from "lucide-react"
+import { Menu, User, X, SunDim } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -21,6 +21,7 @@ export function Header(classNameh) {
             setOpenUser(false)
         }
     }
+
 
     return(
         <header className={`fixed z-[10] bg-(--bg-header) w-full ${classNameh}`}>
@@ -47,7 +48,7 @@ export function Header(classNameh) {
                                     <Link to="/bio">Referências</Link>
                                 </li>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                    <Link to="/">Jogo</Link>
+                                    <Link to="/gondii-court">Jogo</Link>
                                 </li>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
                                     <Link to="/team">Team</Link>
@@ -61,6 +62,7 @@ export function Header(classNameh) {
                         ${openUser ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
                         <nav className="flex bg-(--bg-header) w-[15rem] h-[20rem] rounded-[1rem]">
                             <ol className="flex flex-col justify-center gap-[2rem] p-[2rem] w-full">
+                                <div onClick={switchTheme} className="flex gap-[1rem] cursor-pointer"><SunDim /> <span>Modo claro</span></div>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
                                     <Link to="/registro">Sign-up</Link>
                                 </li>
@@ -87,7 +89,7 @@ export function Header(classNameh) {
                                 <Link to="/bio">Referências</Link>
                             </li>
                             <li className="">
-                                <Link to="/">Jogo</Link>
+                                <Link to="/gondii-court">Jogo</Link>
                             </li>
                             <li className="">
                                 <Link to="/team">Team</Link>

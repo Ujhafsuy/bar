@@ -7,6 +7,7 @@ import Materiais from "../pages/Materiais"
 import Time from "../pages/Time"
 import Referencias from "../pages/Referencias"
 import Users from "../pages/Users"
+import Game from "../pages/Game"
 
 export default function AppRoutes() {
   const location = useLocation()
@@ -23,6 +24,7 @@ export default function AppRoutes() {
         <Route path="/team" element={<Time/>} />
         <Route path="/bio" element={<Referencias/>} />
         <Route path="/user" element={<Users/>} />
+        <Route path="/gondii-court" element={<Game/>} />
       </Routes>
     </>
   )

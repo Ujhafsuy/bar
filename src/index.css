@@ -2,6 +2,34 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 /*---break---*/
+
+.game-main{
+  position: relative;
+}
+
+.game-main::before{
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  background-size: cover;
+  background-position: left;
+  z-index: -1;
+}
+
+.game-main::after{
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url('./images/fundo.png');
+  background-size: cover;
+  background-position: left;
+  opacity: 0.5;
+  z-index: -1;
+}
+
 @custom-variant dark (&:is(.dark *));
 :root{
   /*HOME*/

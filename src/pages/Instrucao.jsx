@@ -16,13 +16,6 @@ function Instrucao() {
                     <h2 className="text-blue-200 text-lg">Como utilizar o B.A.R.</h2>
                 </section>
                 <section className="mb-16 flex flex-col">
-                <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
-                className="relative w-full"
-                >
                     <div className="flex items-center gap-3 mb-6">
                         <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold">
                         ?
@@ -31,7 +24,6 @@ function Instrucao() {
                         O que vem na caixa?
                         </h2>
                     </div>
-                </motion.div>
                 <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
