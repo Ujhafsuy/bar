@@ -2,6 +2,7 @@
 const defaultConfig = require("shadcn/ui/tailwind.config")
 
 module.exports = {
+  darkMode: "class",
   ...defaultConfig,
   content: ["./src/**/*.{js,jsx,ts,tsx}", "*.{js,ts,jsx,tsx,mdx}"],
   theme: {

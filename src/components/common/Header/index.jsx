@@ -1,8 +1,12 @@
-import { Menu, User, X, SunDim } from "lucide-react"
+import { Menu, User, X, SunDim, MoonIcon } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import {useTheme } from "../../../contexts/ThemeContext"
 
 export function Header(classNameh) {
+
+    const { theme, toggleTheme } = useTheme();
+
     const [openMenu, setOpenMenu] = useState(false)
     const [openUser, setOpenUser] = useState(false)
 
@@ -24,7 +28,7 @@ export function Header(classNameh) {
 
 
     return(
-        <header className={`fixed z-[10] bg-(--bg-header) w-full ${classNameh}`}>
+        <header className={`fixed z-[10] bg-(--bg-header) w-full ${classNameh} dark:bg-purple-600`}>
             <div className="md:hidden">
                 <div className="w-full flex items-center justify-between p-[1rem]">
                     {!openMenu ? <Menu onClick={abreMenu} className="cursor-pointer" /> : <X onClick={abreMenu} className="cursor-pointer" />}
@@ -62,7 +66,10 @@ export function Header(classNameh) {
                         ${openUser ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
                         <nav className="flex bg-(--bg-header) w-[15rem] h-[20rem] rounded-[1rem]">
                             <ol className="flex flex-col justify-center gap-[2rem] p-[2rem] w-full">
-                                <div onClick={switchTheme} className="flex gap-[1rem] cursor-pointer"><SunDim /> <span>Modo claro</span></div>
+                                <div onClick={toggleTheme}className="flex gap-[1rem] cursor-pointer">{theme == 'light'? (<>
+                        <SunDim></SunDim><span>Modo claro</span></>
+                        ) : (<><MoonIcon></MoonIcon><span>Modo escuro</span></>)}
+                    </div>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
                                     <Link to="/registro">Sign-up</Link>
                                 </li>
@@ -114,6 +121,10 @@ export function Header(classNameh) {
                             </div>
                         </ol>
                     </nav>
+                    <div onClick={toggleTheme}className="flex gap-[1rem] cursor-pointer">{theme == 'light'? (<>
+                        <SunDim></SunDim><span>Modo claro</span></>
+                        ) : (<><MoonIcon></MoonIcon><span>Modo escuro</span></>)}
+                    </div>
                 </div>
         </header>
     )
