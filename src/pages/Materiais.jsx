@@ -199,8 +199,8 @@ function Materiais() {
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                         {/* Product Images */}
                         <div className="space-y-4">
-                            <Card className="bg-slate-700 border-slate-600 p-6">
-                            <div className="aspect-square bg-gradient-to-br from-cyan-400 to-blue-600 rounded-lg flex items-center justify-center">
+                            <Card className="bg-slate-700 border-slate-600 ">
+                            <div className="aspect-square rounded-lg flex items-center justify-center">
                                 <img
                                 src="/cute-white-robot.png"
                                 alt="Robô B.A.R"
@@ -210,25 +210,12 @@ function Materiais() {
                             </Card>
 
                             {/* Thumbnail images */}
-                            <div className="flex gap-2">
-                            {[1, 2, 3].map((i) => (
-                                <Card key={i} className="bg-slate-700 border-slate-600 p-2 flex-1">
-                                <div className="aspect-square bg-gradient-to-br from-cyan-400 to-blue-600 rounded">
-                                    <img
-                                    src={`/robot-view.png?height=80&width=80&query=robot view ${i}`}
-                                    alt={`Vista ${i}`}
-                                    className="w-full h-full object-cover rounded"
-                                    />
-                                </div>
-                                </Card>
-                            ))}
                             </div>
-                        </div>
 
                         {/* Product Information */}
                         <div className="space-y-6">
                             <Tabs defaultValue="description" className="w-full">
-                            <TabsList className="grid w-full grid-cols-3 bg-slate-700">
+                            <TabsList className="grid w-full grid-cols-2 bg-slate-700">
                                 <TabsTrigger
                                 value="description"
                                 className="data-[state=active]:bg-white data-[state=active]:text-slate-900"
@@ -240,12 +227,6 @@ function Materiais() {
                                 className="data-[state=active]:bg-white data-[state=active]:text-slate-900"
                                 >
                                 Especificações
-                                </TabsTrigger>
-                                <TabsTrigger
-                                value="reviews"
-                                className="data-[state=active]:bg-white data-[state=active]:text-slate-900"
-                                >
-                                Avaliações
                                 </TabsTrigger>
                             </TabsList>
 
@@ -282,19 +263,6 @@ function Materiais() {
                                     <span className="font-semibold">Dimensões:</span>
                                     <p className="text-sm">15 x 12 x 8 cm</p>
                                     </div>
-                                </div>
-                                </div>
-                            </TabsContent>
-
-                            <TabsContent value="reviews" className="mt-6">
-                                <div className="text-slate-300 space-y-4">
-                                <div className="border-l-4 border-cyan-400 pl-4">
-                                    <p className="italic">"Projeto incrível! Superou todas as expectativas."</p>
-                                    <p className="text-sm text-slate-400 mt-2">- João Silva</p>
-                                </div>
-                                <div className="border-l-4 border-cyan-400 pl-4">
-                                    <p className="italic">"Qualidade excepcional e fácil de usar."</p>
-                                    <p className="text-sm text-slate-400 mt-2">- Maria Santos</p>
                                 </div>
                                 </div>
                             </TabsContent>

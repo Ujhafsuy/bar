@@ -11,7 +11,7 @@ function Game(){
                 <section className="flex flex-col items-center justify-center gap-[5rem]">
                     <h1 className="text-7xl text-(--text-normal-color)">GOUNDII COURT</h1>
 
-                    <Button className="w-full">JOGAR</Button>
+                    <Button className="w-full p-6 bg-[#010a13] text-[white] dark:bg-[#314a62]">JOGAR</Button>
 
                     <h2 className="text-(--text-normal-color) text-5xl font-regular">Sinopse</h2>
 

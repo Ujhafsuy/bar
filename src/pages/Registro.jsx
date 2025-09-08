@@ -49,18 +49,18 @@ export function Registro() {
     return (
         <>
             <main>
-                <div className="min-h-screen bg-(--bg-normal-pages) flex flex-col items-center justify-center p-4">
+                <div className="min-h-screen bg-(--bg-normal-pages) dark:bg-[white] flex flex-col items-center justify-center p-4">
                     <div className="w-full max-w-md space-y-8 flex flex-col justify-around">
                         {/* Back Button */}
                         <Link to="/">
-                            <Button variant="ghost" className="cursor-pointer text-white hover:bg-slate-700 self-start p-2">
+                            <Button variant="ghost" className="cursor-pointer text-white dark:text-[black] hover:bg-slate-700 hover:dark:text-[white] self-start p-2">
                             <ArrowLeft className="h-5 w-5" />
                             </Button>
                         </Link>
 
                         {/* Register Form */}
-                        <div className="text-center">
-                        <h1 className="text-2xl md:text-4xl font-bold text-white tracking-wider">Cadastrar-se</h1>
+                        <div className="text-center dark:text-[black]">
+                        <h1 className="text-2xl md:text-4xl font-bold text-white tracking-wider dark:text-[black]">Cadastrar-se</h1>
                         </div>
 
                         <form onSubmit={handleRegisterSubmit} className="space-y-6">
@@ -73,7 +73,7 @@ export function Registro() {
                                 id="fullName"
                                 type="text"
                                 required
-                                className="w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
+                                className="dark:text-[black] w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
                             />
                             </div>
 
@@ -85,7 +85,7 @@ export function Registro() {
                                 id="registerEmail"
                                 type="email"
                                 required
-                                className="w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
+                                className="dark:text-[black] w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
                             />
                             </div>
 
@@ -97,7 +97,7 @@ export function Registro() {
                                 id="registerPassword"
                                 type="password"
                                 required
-                                className="w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
+                                className="dark:text-[black] w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
                             />
                             </div>
                         </div>
@@ -162,18 +162,18 @@ export function Login() {
     return (
         <>
             <main>
-            <div className="min-h-screen bg-(--bg-normal-pages) flex flex-col items-center justify-center p-4">
+            <div className="min-h-screen bg-(--bg-normal-pages) dark:bg-[white] flex flex-col items-center justify-center p-4">
         <div className="w-full max-w-md space-y-8 flex flex-col justify-around">
           {/* Back Button */}
             <Link to="/">
-                <Button variant="ghost" className="cursor-pointer text-white hover:bg-slate-700 self-start p-2">
+                <Button variant="ghost" className="cursor-pointer text-white hover:bg-slate-700 self-start p-2 dark:text-[black] hover:dark:text-[white]">
                 <ArrowLeft className="h-5 w-5" />
                 </Button>
             </Link>
 
           {/* Login Form */}
-          <div className="text-center space-y-2">
-            <h1 className="text-2xl md:text-4xl font-bold text-white tracking-wider">Login</h1>
+          <div className="text-center space-y-2 dark:text-[black]">
+            <h1 className="text-2xl md:text-4xl font-bold text-white tracking-wider dark:text-[black]">Login</h1>
           </div>
 
           <form onSubmit={handleLoginSubmit} className="space-y-6">
@@ -186,7 +186,7 @@ export function Login() {
                   id="email"
                   type="email"
                   required
-                  className="w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
+                  className="dark:text-[black] w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
                 />
               </div>
 
@@ -198,7 +198,7 @@ export function Login() {
                   id="password"
                   type="password"
                   required
-                  className="w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
+                  className="dark:text-[black] w-full bg-transparent border-0 border-b border-gray-600 rounded-none px-0 py-3 text-white placeholder:text-gray-500 outline-none"
                 />
               </div>
             </div>
