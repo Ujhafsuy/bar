@@ -1,7 +1,7 @@
 import { Routes, Route, Router, useLocation } from "react-router-dom"
 import ScrollToTop from "../components/common/ScrollToTop/index"
 import Home from "../pages/Home"
-import {Registro, Login} from "../pages/Registro"
+import {Registro, Login, ConfirmEmail} from "../pages/Registro"
 import Instrucao from "../pages/Instrucao"
 import Materiais from "../pages/Materiais"
 import Time from "../pages/Time"
@@ -25,6 +25,7 @@ export default function AppRoutes() {
         <Route path="/bio" element={<Referencias/>} />
         <Route path="/user" element={<Users/>} />
         <Route path="/gondii-court" element={<Game/>} />
+        <Route path="/confirm" element={<ConfirmEmail/>} />
       </Routes>
     </>
   )

@@ -24,13 +24,6 @@ function Instrucao() {
                         O que vem na caixa?
                         </h2>
                     </div>
-                <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
-                className="relative w-full"
-                >
                     <div className="grid md:grid-cols-2 gap-6 mb-[6rem]">
                         <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                         <CardContent className="p-4">
@@ -77,7 +70,6 @@ function Instrucao() {
                         </div>
                         </div>
                     </div>
-                </motion.div>
                 <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}

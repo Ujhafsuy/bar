@@ -1,26 +1,55 @@
 import { Link } from "react-router-dom"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "../components/ui/button"
 import { Input } from "../components/ui/input"
 import { Label } from "../components/ui/label"
+import { createClient } from "@supabase/supabase-js";
 
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY);
 export function Registro() {
-    const handleLoginSubmit = (e) => {
-        e.preventDefault()
-        console.log("Login submitted")
-    }
+  async function handleRegisterSubmit(event) {
+    event.preventDefault();
     
-    const handleRegisterSubmit = (e) => {
-        e.preventDefault()
-        console.log("Register submitted")
+    const fullName = event.target.fullName.value;
+    const email = event.target.registerEmail.value;
+    const password = event.target.registerPassword.value;
+  
+    try {
+      // Cria usuário no Auth
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+        options: {
+          emailRedirectTo: window.location.origin + "/confirm", // página de confirmação
+        },
+      });
+  
+      if (error) throw error;
+  
+      alert(
+        "Cadastro realizado! Verifique seu e-mail para confirmar a conta ✅"
+      );
+  
+      // Armazena dados temporários no localStorage para depois ativar a conta
+      localStorage.setItem(
+        "pendingUser",
+        JSON.stringify({ id: data.user.id, fullName, email })
+      );
+  
+      // Redireciona para uma página que orienta o usuário a confirmar o e-mail
+      window.location.href = "/confirm";
+    } catch (err) {
+      console.error("Erro ao registrar:", err.message);
+      alert("Erro ao registrar: " + err.message);
     }
+  }
 
     return (
         <>
             <main>
-                <div className="min-h-screen bg-slate-800 flex flex-col items-center justify-center p-4">
+                <div className="min-h-screen bg-(--bg-normal-pages) flex flex-col items-center justify-center p-4">
                     <div className="w-full max-w-md space-y-8 flex flex-col justify-around">
                         {/* Back Button */}
                         <Link to="/">
@@ -74,16 +103,13 @@ export function Registro() {
                         </div>
 
                         <div className="pt-4">
-                            <Link to="/instruct">
-                                <Button type="submit" className="mb-4 cursor-pointer w-full bg-black hover:bg-(--ciano-bt) text-white py-3 rounded-md font-medium">
+                              <Button type="submit" className="mb-4 cursor-pointer w-full bg-black hover:bg-(--ciano-bt) text-white py-3 rounded-md font-medium">
                                 Confirmar
-                                </Button>
-                            </Link>
+                              </Button>
 
                             <Link to="/login">
                                 <Button
                                 type="button"
-                                onClick={() => setCurrentPage("login")}
                                 className="cursor-pointer w-full bg-black hover:bg-(--ciano-bt) text-white py-3 rounded-md font-medium"
                                 >
                                 Já tenho uma conta
@@ -99,20 +125,44 @@ export function Registro() {
 }
 
 export function Login() {
-    const handleLoginSubmit = (e) => {
-      e.preventDefault()
-      console.log("Login submitted")
+    async function handleLoginSubmit(event) {
+      event.preventDefault();
+    
+      const email = event.target.loginEmail.value;
+      const password = event.target.loginPassword.value;
+    
+      try {
+        // 1️⃣ Faz login no Auth
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password,
+        });
+    
+        if (error) throw error;
+    
+        const user = data.user;
+    
+        // 2️⃣ Busca os dados extras na tabela "users"
+        const { data: userProfile, error: profileError } = await supabase
+          .from("users")
+          .select("*")
+          .eq("id", user.id) // <-- aqui usa UUID
+          .single();
+    
+        if (profileError) throw profileError;
+    
+        console.log("Login bem-sucedido:", userProfile);
+        alert(`Bem-vindo, ${userProfile.name}! 🚀`);
+    
+      } catch (err) {
+        console.error("Erro ao logar:", err.message);
+        alert("Erro ao logar: " + err.message);
+      }
     }
-  
-    const handleRegisterSubmit = (e) => {
-      e.preventDefault()
-      console.log("Register submitted")
-    }
-
     return (
         <>
             <main>
-            <div className="min-h-screen bg-slate-800 flex flex-col items-center justify-center p-4">
+            <div className="min-h-screen bg-(--bg-normal-pages) flex flex-col items-center justify-center p-4">
         <div className="w-full max-w-md space-y-8 flex flex-col justify-around">
           {/* Back Button */}
             <Link to="/">
@@ -184,4 +234,42 @@ export function Login() {
             </main>
         </>
     )
+}
+
+export function ConfirmEmail() {
+  useEffect(() => {
+    async function activateUser() {
+      const pendingUser = JSON.parse(localStorage.getItem("pendingUser"));
+      if (!pendingUser) return;
+
+      try {
+        const res = await fetch("/api/activate-user", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(pendingUser),
+        });
+
+        const data = await res.json();
+
+        if (res.ok) {
+          alert(data.message);
+          localStorage.removeItem("pendingUser");
+          window.location.href = "/";
+        } else {
+          alert("Erro: " + data.error);
+        }
+      } catch (err) {
+        console.error(err);
+        const text = await res.text();
+        console.log("Resposta do backend:", text);
+
+        const data = text ? JSON.parse(text) : {};
+        alert("Erro ao ativar usuário: " + err.message);
+      }
+    }
+
+    activateUser();
+  }, []);
+
+  return <div>Verificando confirmação de e-mail...</div>;
 }
