@@ -39,7 +39,7 @@
   --bg-robot: #010B14;
   --bg-footer: #000;
   --bg-nav: #01152A;
-  --section-home-one: #2d2d2d;
+  --section-home-one: rgb(0, 38, 58);
   --font-color: #fff;
   --text-highlight: #757575;
   --color-border: #989898;
@@ -72,7 +72,7 @@
   --bg-robot: #fff;
   --bg-footer: #000;
   --bg-nav: #01152A;
-  --section-home-one: #2d2d2d;
+  --section-home-one: rgb(0, 38, 58);
   --font-color: #fff;
   --text-highlight: #757575;
   --color-border: #989898;
