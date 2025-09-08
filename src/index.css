@@ -69,7 +69,7 @@
   --ciano: #2ACDC5;
   --bg-header: #fff;
   --bg-instruct: #2ACDC5;
-  --bg-robot: #010B14;
+  --bg-robot: #fff;
   --bg-footer: #000;
   --bg-nav: #01152A;
   --section-home-one: #2d2d2d;
@@ -82,7 +82,7 @@
   --ciano-bt: #2ACDC5;
 
   /*DEFAULT*/
-  --bg-normal-pages: #01152A;
+  --bg-normal-pages: #3B5B7B;
   --text-normal-color: #fff;
 
   /*INSTRUÇÃO*/
@@ -92,6 +92,6 @@
   /*REFERÊNCIAS*/
   --bg-section: #2ACDC5;
   --bg-count: #85EFAC;
-  --bg-article: #0A233C;
-  --bg-info: #4A89D5;
+  --bg-article: #314A62;
+  --bg-info: #2A60A0;
 }

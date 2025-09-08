@@ -63,8 +63,8 @@ function Home() {
                     >
                     <div className="mt-[6rem] h-full flex flex-col items-center justify-between gap-[5rem]">
                         <div className="md:py-[5rem]">
-                            <h2 className="w-[20rem] md:w-[40rem] text-(--fontw-h2) md:text-[1.5rem] font-bold text-center mb-[1rem]">ENXERGUE A QUÍMICA COMO NUNCA ANTES!</h2>
-                            <p className="w-[20rem] md:w-[40rem] text-justify md:text-[1.5rem]">O BAR (Biochemical Ads Robot) é um robô físico projetado para ajudar estudantes do ensino médio a aprenderem bioquímica de forma prática e interativa.</p>
+                            <h2 className="w-[20rem] md:w-[40rem] text-(--fontw-h2) md:text-[1.5rem] font-bold text-center mb-[1rem] dark:text-[black]">ENXERGUE A QUÍMICA COMO NUNCA ANTES!</h2>
+                            <p className="w-[20rem] md:w-[40rem] text-justify md:text-[1.5rem] dark:text-[black]">O BAR (Biochemical Ads Robot) é um robô físico projetado para ajudar estudantes do ensino médio a aprenderem bioquímica de forma prática e interativa.</p>
                         </div>
 
                         <AnimatePresence mode="wait">

@@ -172,7 +172,7 @@ function Materiais() {
                                 key={index}
                                 onClick={() => goToSlide(index)}
                                 className={`w-2 h-2 rounded-full transition-colors ${
-                                index === currentPage ? "bg-white" : "bg-slate-600 hover:bg-slate-500"
+                                index === currentPage ? "bg-white" : "bg-black hover:bg-slate-500"
                                 }`}
                             />
                             ))}

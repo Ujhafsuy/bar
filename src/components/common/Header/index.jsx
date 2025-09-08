@@ -28,7 +28,7 @@ export function Header(classNameh) {
 
 
     return(
-        <header className={`fixed z-[10] bg-(--bg-header) w-full ${classNameh} dark:bg-purple-600`}>
+        <header className={`fixed z-[10] bg-(--bg-header) w-full ${classNameh}`}>
             <div className="md:hidden">
                 <div className="w-full flex items-center justify-between p-[1rem]">
                     {!openMenu ? <Menu onClick={abreMenu} className="cursor-pointer" /> : <X onClick={abreMenu} className="cursor-pointer" />}
@@ -119,12 +119,13 @@ export function Header(classNameh) {
                                     </ol>
                                 </nav>
                             </div>
+                            <div onClick={toggleTheme}className="text-left items-center justify-center flex gap-[1rem] cursor-pointer">{theme == 'light'? (
+                        <SunDim></SunDim>
+                        ) : (<MoonIcon></MoonIcon>)}
+                    </div>
                         </ol>
                     </nav>
-                    <div onClick={toggleTheme}className="flex gap-[1rem] cursor-pointer">{theme == 'light'? (<>
-                        <SunDim></SunDim><span>Modo claro</span></>
-                        ) : (<><MoonIcon></MoonIcon><span>Modo escuro</span></>)}
-                    </div>
+                    
                 </div>
         </header>
     )
