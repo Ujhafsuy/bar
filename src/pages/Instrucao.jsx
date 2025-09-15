@@ -25,8 +25,8 @@ function Instrucao() {
                         </h2>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6 mb-[6rem]">
-                        <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                        <CardContent className="p-4">
+                        <Card className="">
+                        <CardContent className="">
                             <div className="aspect-square bg-gray-300 rounded-lg mb-4 flex items-center justify-center">
                             <img
                                 src="/placeholder.svg?height=200&width=200"
@@ -89,8 +89,8 @@ function Instrucao() {
 
                         <div className="grid md:grid-cols-2 gap-6 mb-6">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                            <CardContent className="p-4">
-                                <div className="aspect-square bg-gray-300 rounded-lg mb-4 flex items-center justify-center">
+                            <CardContent className="">
+                                <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
                                     src="/placeholder.svg?height=200&width=200"
                                     alt="Conectando B.A.R."
@@ -105,7 +105,7 @@ function Instrucao() {
                                 Agora que o seu assistente chegou é só ligar e conectar!
                             </p>
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                                <CardContent className="p-4">
+                                <CardContent className="">
                                 <div className="aspect-video bg-gray-300 rounded-lg flex items-center justify-center">
                                     <img
                                     src="/placeholder.svg?height=120&width=200"
@@ -117,7 +117,7 @@ function Instrucao() {
                             </Card>
                             </div>
                         </div>
-                    </div>
+                    </div>  
                 </motion.div>
                 <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -145,7 +145,7 @@ function Instrucao() {
                         <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
                         <div className="text-center">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
-                            <CardContent className="p-4">
+                            <CardContent className="">
                                 <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
                                     src="/placeholder.svg?height=100&width=100"
@@ -162,7 +162,7 @@ function Instrucao() {
 
                         <div className="text-center">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
-                            <CardContent className="p-4">
+                            <CardContent className="">
                                 <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
                                     src="/placeholder.svg?height=100&width=100"
@@ -179,7 +179,7 @@ function Instrucao() {
 
                         <div className="text-center">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
-                            <CardContent className="p-4">
+                            <CardContent className="">
                                 <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
                                     src="/placeholder.svg?height=100&width=100"
@@ -196,7 +196,7 @@ function Instrucao() {
 
                         <div className="text-center">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
-                            <CardContent className="p-4">
+                            <CardContent className="">
                                 <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
                                     src="/placeholder.svg?height=100&width=100"
@@ -213,7 +213,7 @@ function Instrucao() {
 
                         <div className="text-center">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
-                            <CardContent className="p-4">
+                            <CardContent className="">
                                 <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
                                     src="/placeholder.svg?height=100&width=100"
@@ -249,7 +249,7 @@ function Instrucao() {
 
                         <div className="grid md:grid-cols-2 gap-8">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-                            <CardContent className="p-6">
+                            <CardContent className="">
                                 <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
                                     src="/placeholder.svg?height=250&width=250"
@@ -321,7 +321,7 @@ function Instrucao() {
                             </h2>
                             
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20 max-w-3xl mx-auto">
-                                <CardContent className="p-6">
+                                <CardContent className="">
                                 <div className="aspect-video bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg flex items-center justify-center relative overflow-hidden">
                                     <Button 
                                     size="lg" 

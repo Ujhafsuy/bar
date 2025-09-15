@@ -31,11 +31,11 @@ function Home() {
                         <div className="">
                             <div className="flex flex-col items-center md:items-start">
                                 <h1 className="text-[7.5rem] md:text-[8.5rem] font-normal"><span className='text-(--ciano)'>B</span>.A.R.</h1>
-                                <p className="relative mb-[1rem] z-[0] -top-[2rem] text-(--text-highlight) md:text-[1.5rem] md:ml-[0.5rem]">Biochemical Ads Robot</p>
+                                <p className="relative mb-[1rem] z-[0] -top-[2rem] text-(--text-highlight) md:text-[1.5rem] md:ml-[0.5rem]">Bluewater Autonomous Restorer</p>
                             </div>
                             <div>
-                                <p className="text-center font-bold text-[1.25rem] md:text-[2.25rem] w-[20rem] md:w-[40rem] md:text-left">Transforme sua forma de estudar química com o BAR.</p>
-                                <p className="text-center text-[0.9rem] md:text-[1.9rem] mb-[4rem] w-[20rem] md:w-[40rem] md:text-left">Seu assistente inteligente para aprender Bioquímica com facilidade.</p>
+                                <p className="text-center font-bold text-[1.25rem] md:text-[2.25rem] w-[20rem] md:w-[40rem] md:text-left"> Limpeza eficiente, impacto duradouro</p>
+                                <p className="text-center text-[0.9rem] md:text-[1.9rem] mb-[4rem] w-[20rem] md:w-[40rem] md:text-left">Tecnologia inteligente para águas mais limpas e um futuro sustentável.</p>
                             </div>
                         </div>
                     </section>
@@ -55,8 +55,8 @@ function Home() {
                     >
                     <div className="mt-[6rem] h-full flex flex-col items-center justify-between gap-[5rem]">
                         <div className="md:py-[5rem]">
-                            <h2 className="w-[20rem] md:w-[40rem] text-(--fontw-h2) md:text-[1.5rem] font-bold text-center mb-[1rem] dark:text-[black]">ENXERGUE A QUÍMICA COMO NUNCA ANTES!</h2>
-                            <p className="w-[20rem] md:w-[40rem] text-justify md:text-[1.5rem] dark:text-[black]">O BAR (Biochemical Ads Robot) é um robô físico projetado para ajudar estudantes do ensino médio a aprenderem bioquímica de forma prática e interativa.</p>
+                            <h2 className="w-[20rem] md:w-[40rem] text-(--fontw-h2) md:text-[1.5rem] font-bold text-center mb-[1rem] dark:text-[black]">ECONOMIZE TEMPO E PREZERVE O MEIO AMBIENTE!</h2>
+                            <p className="w-[20rem] md:w-[40rem] text-justify md:text-[1.5rem] dark:text-[black]">Desenvolvido para remover resíduos sólidos de lagos de forma rápida, segura e ecológica. Equipado com sensores inteligentes, ele detecta e coleta lixo flutuante, ajudando a restaurar a qualidade da água e a preservar a vida aquática.</p>
                         </div>
 
                         <AnimatePresence mode="wait">

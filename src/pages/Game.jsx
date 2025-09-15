@@ -1,17 +1,16 @@
 import Footer from "../components/common/Footer"
 import { Button } from "../components/ui/button"
 import { Header } from "../components/common/Header"
-import fundo from "../images/fundo.png"
 
 function Game(){
     return(
         <div>
             <Header />
-            <main className={`flex flex-col items-center justify-center px-4 py-[8rem] max-w-4xl mx-auto game-main`}>
-                <section className="flex flex-col items-center justify-center gap-[5rem]">
+            <main className={`flex flex-col items-center justify-center px-4 py-[8rem] md:w-full mx-auto game-main`}>
+                <section className="flex flex-col items-center justify-center gap-[5rem] max-w-4xl">
                     <h1 className="text-7xl text-(--text-normal-color)">GOUNDII COURT</h1>
 
-                    <Button className="w-full p-6 bg-[#010a13] text-[white] dark:bg-[#314a62]">JOGAR</Button>
+                    <Button className="w-full p-6 bg-[#010a13] text-[white] dark:bg-[#314a62] hover:bg-(--bg-count) hover:text-(--text-normal-color) cursor-pointer">JOGAR</Button>
 
                     <h2 className="text-(--text-normal-color) text-5xl font-regular">Sinopse</h2>
 

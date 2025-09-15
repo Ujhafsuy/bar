@@ -71,7 +71,7 @@ export function Header(classNameh) {
                         ) : (<><MoonIcon></MoonIcon><span>Modo escuro</span></>)}
                     </div>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                    <Link to="/registro">Sign-up</Link>
+                                    <Link to="/register">Sign-up</Link>
                                 </li>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
                                     <Link to="/login">Log-in</Link>

@@ -194,7 +194,7 @@ function Referencias() {
                                 <Button
                                 variant="outline"
                                 size="sm"
-                                className="text-[black] hover:bg-(--bg-count) hover:text-(--text-normal-color) w-full md:w-[auto] mt-[1rem] border-0"
+                                className="text-[black] bg-[white] hover:bg-(--bg-count) hover:text-(--text-normal-color) w-full md:w-[auto] mt-[1rem] border-0"
                                 asChild
                                 >
                                 <a href={ref.url} target="_blank" rel="noopener noreferrer">

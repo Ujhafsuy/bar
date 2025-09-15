@@ -243,7 +243,7 @@ export function ConfirmEmail() {
       if (!pendingUser) return;
 
       try {
-        const res = await fetch("/api/activate-user", {
+        const res = await fetch("http://localhost:3000/api/activate-user", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(pendingUser),
