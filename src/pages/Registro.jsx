@@ -35,7 +35,7 @@ export function Registro() {
       // Armazena dados temporários no localStorage para depois ativar a conta
       localStorage.setItem(
         "pendingUser",
-        JSON.stringify({ id: data.user.id, fullName, email })
+        JSON.stringify({ id: data.user.id, fullName, email, idprod:import.meta.env.VITE_PROD_ID })
       );
   
       // Redireciona para uma página que orienta o usuário a confirmar o e-mail
@@ -240,6 +240,7 @@ export function ConfirmEmail() {
   useEffect(() => {
     async function activateUser() {
       const pendingUser = JSON.parse(localStorage.getItem("pendingUser"));
+      console.log(pendingUser)
       if (!pendingUser) return;
 
       try {
