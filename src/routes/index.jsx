@@ -8,6 +8,7 @@ import Time from "../pages/Time"
 import Referencias from "../pages/Referencias"
 import Users from "../pages/Users"
 import Game from "../pages/Game"
+import { Caminho } from "../pages/Caminho"
 
 export default function AppRoutes() {
   const location = useLocation()
@@ -26,6 +27,7 @@ export default function AppRoutes() {
         <Route path="/user" element={<Users/>} />
         <Route path="/gondii-court" element={<Game/>} />
         <Route path="/confirm" element={<ConfirmEmail/>} />
+        <Route path="/trace" element={<Caminho/>} />
       </Routes>
     </>
   )
