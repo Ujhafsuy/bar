@@ -27,7 +27,7 @@ function Instrucao() {
                     <div className="grid md:grid-cols-2 gap-6 mb-[6rem]">
                         <Card className="">
                         <CardContent className="">
-                            <div className="aspect-square bg-gray-300 rounded-lg mb-4 flex items-center justify-center">
+                            <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                             <img
                                 src="/placeholder.svg?height=200&width=200"
                                 alt="Robô B.A.R."
@@ -41,31 +41,25 @@ function Instrucao() {
                         <div className="flex items-start gap-3">
                             <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
                             <p className="text-white text-sm">
-                            B.A.R. O melhor robô para o estudo de Bioquímica
+                            B.A.R. A melhor linha de robôs para a limpeza de rios.
                             </p>
                         </div>
                         <div className="flex items-start gap-3">
                             <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
                             <p className="text-white text-sm">
-                            Manual de instruções
+                            Manual de instruções.
                             </p>
                         </div>
                         <div className="flex items-start gap-3">
                             <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
                             <p className="text-white text-sm">
-                            Visualizador holográfico de estrutura
+                            Módulos para comunicação e interatividade de trajeto.
                             </p>
                         </div>
                         <div className="flex items-start gap-3">
                             <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
                             <p className="text-white text-sm">
-                            Carregador de 60Wts
-                            </p>
-                        </div>
-                        <div className="flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
-                            <p className="text-white text-sm">
-                            Um novo método inovador e fácil de aprender Bioquímica
+                            Carregador.
                             </p>
                         </div>
                         </div>
@@ -102,7 +96,7 @@ function Instrucao() {
 
                             <div className="flex flex-col justify-center">
                             <p className="text-white text-center mb-4">
-                                Agora que o seu assistente chegou é só ligar e conectar!
+                                Agora que você já ligou é só traçar sua rota!
                             </p>
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                                 <CardContent className="">
@@ -156,7 +150,7 @@ function Instrucao() {
                             </CardContent>
                             </Card>
                             <p className="text-white text-sm">
-                            No menu, vá em configuração e selecione o seu assistente.
+                            No menu, vá no ícone de usuário.
                             </p>
                         </div>
 
@@ -173,7 +167,7 @@ function Instrucao() {
                             </CardContent>
                             </Card>
                             <p className="text-white text-sm">
-                            Clique em configurar meu B.A.R.
+                            Efetue o cadastro.
                             </p>
                         </div>
 
@@ -190,7 +184,7 @@ function Instrucao() {
                             </CardContent>
                             </Card>
                             <p className="text-white text-sm">
-                            Escolha o tipo de configuração, rápida ou completa.
+                            Após o login, você terá acesso ao menu de Rotas, acesse.
                             </p>
                         </div>
 
@@ -207,7 +201,7 @@ function Instrucao() {
                             </CardContent>
                             </Card>
                             <p className="text-white text-sm">
-                            Responda o questionário de acordo com seus conhecimentos e objetivos.
+                            Defina sua rota, clicando nos pontos desejados para sua rota.
                             </p>
                         </div>
 
@@ -224,7 +218,7 @@ function Instrucao() {
                             </CardContent>
                             </Card>
                             <p className="text-white text-sm">
-                            Pronto é só começar a usar.
+                            Pronto é usar o botão de "INICIAR" para o B.A.R. começar sua rota!
                             </p>
                         </div>
                         </div>
@@ -235,7 +229,7 @@ function Instrucao() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
-                className="relative w-full"
+                className="relative w-full hidden"
                 >
                     <div className="mb-16">
                         <div className="flex items-center gap-3 mb-6">

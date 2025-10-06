@@ -8,6 +8,14 @@ import { Card } from "../components/ui/card"
 import { Button } from "../components/ui/button"
 import { motion, AnimatePresence } from "framer-motion";
 
+import esp from "../images/esp.webp"
+import motor from "../images/motor.png"
+import gps from "../images/gps.png"
+import bussola from "../images/bussola.png"
+import ponte from "../images/ponte.png"
+import reg from "../images/reg.png"
+import sup from "../images/sup.png"
+
 import { Star, Wifi, Bluetooth, Battery, Package2, ZoomIn, ShoppingCart, Info, ChevronLeft, ChevronRight } from "lucide-react"
 
 function Materiais() {
@@ -18,49 +26,43 @@ function Materiais() {
           id: 1,
           name: "ESP 32",
           description: "Responsável pelo processamento e conexão do projeto",
-          image: "/esp32-board.png",
+          image: esp
         },
         {
           id: 2,
-          name: "ESP 32 DevKit",
+          name: "Motor com Caixa de Redução 12V 1000RPM",
           description: "Placa de desenvolvimento com WiFi e Bluetooth integrados",
-          image: "/esp32-dev-board.png",
+          image: motor
         },
         {
           id: 3,
-          name: "ESP 32 WiFi Module",
-          description: "Módulo compacto para conectividade sem fio",
-          image: "/esp32-wifi-module.png",
+          name: "Módulo GPS GY-NEO6MV2 com Antena",
+          description: "Placa baseada no módulo GPS NEO-6M da ublox. Acompanha antena.",
+          image: gps
         },
         {
           id: 4,
-          name: "Sensor Ultrassônico",
-          description: "Sensor de distância para detecção de obstáculos",
-          image: "/ultrasonic-sensor-hc-sr04.png",
+          name: "Módulo Bússola Eletrônica HMC5883L",
+          description: "Este é o módulo bússola eletrônica HMC5883L. Este sensor também é conhecimento como magnetômetro, pois consegue monitorar o campo magnético terrestre nos eixos X, Y e Z, e assim encontrar usa direção no espaço.",
+          image: bussola
         },
         {
           id: 5,
-          name: "Servo Motor",
-          description: "Motor de precisão para movimentação controlada",
-          image: "/servo-motor-sg90.png",
+          name: "Módulo Driver Ponte H - L298N",
+          description: "Controle motores de até 2A de uma forma simples com este módulo.",
+          image: ponte
         },
         {
           id: 6,
-          name: "Display OLED",
-          description: "Tela para exibição de informações do sistema",
-          image: "/oled-display-128x64.png",
+          name: "Módulo Regulador de Tensão Ajustável LM2596 3A",
+          description: "Trata-se de um módulo regulador de tensão que aceita tensões de 4,5 a 28 V com saída variando de 0,8 a 20 V.",
+          image: reg
         },
         {
           id: 7,
-          name: "Bateria Li-Po",
-          description: "Fonte de energia recarregável de alta capacidade",
-          image: "/placeholder-uxoah.png",
-        },
-        {
-          id: 8,
-          name: "Câmera ESP32-CAM",
-          description: "Módulo de câmera para captura de imagens",
-          image: "/esp32-cam-module.png",
+          name: "Suporte Porta 4 Pilhas Aa",
+          description: "O Suporte para 4 Pilhas AA, além de um simplificado sistema de travas de modo a evitar que as pilhas sejam deslocadas do compartimento.",
+          image: sup
         },
       ]
     const productImages = [
@@ -147,7 +149,7 @@ function Materiais() {
                             <Card key={material.id} className="bg-slate-800 border-slate-700 overflow-hidden">
                                 <div className="aspect-square bg-slate-200 rounded-t-lg">
                                 <img
-                                    src={material.image || "/placeholder.svg"}
+                                    src={material.image}
                                     alt={material.name}
                                     className="w-full h-full object-cover"
                                 />
@@ -162,7 +164,7 @@ function Materiais() {
                         </div>
 
                         <div className="flex justify-center items-center gap-4">
-                        <Button variant="ghost" size="sm" onClick={prevSlide} className="text-slate-400 hover:text-white p-1">
+                        <Button variant="ghost" size="sm" onClick={prevSlide} className="text-slate-400 hover:text-white p-1 cursor-pointer">
                             <ChevronLeft className="w-5 h-5" />
                         </Button>
 
@@ -178,7 +180,7 @@ function Materiais() {
                             ))}
                         </div>
 
-                        <Button variant="ghost" size="sm" onClick={nextSlide} className="text-slate-400 hover:text-white p-1">
+                        <Button variant="ghost" size="sm" onClick={nextSlide} className="text-slate-400 hover:text-white p-1 cursor-pointer">
                             <ChevronRight className="w-5 h-5" />
                         </Button>
                         </div>
@@ -267,12 +269,6 @@ function Materiais() {
                                 </div>
                             </TabsContent>
                             </Tabs>
-
-                            <div className="bg-slate-700 p-4 rounded-lg">
-                            <p className="text-slate-300 text-sm">
-                                Este valor inclui eletrônicos, estrutura física, licença de uso do software básico.
-                            </p>
-                            </div>
                         </div>
                         </div>
                     </div>

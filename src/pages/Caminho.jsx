@@ -61,7 +61,7 @@ export function Caminho() {
         <MapContainer
           center={[-23.55052, -46.633308]}
           zoom={13}
-          className="h-[70%] w-[80%] rounded-[1rem]"
+          className="relative z-0 h-full w-full"
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -76,9 +76,9 @@ export function Caminho() {
           )}
         </MapContainer>
 
-        <div className="flex gap-4 mt-4">
+        <div className="absolute md:bottom-10 md:left-10 bottom-10 flex items-center justify-center gap-4 mt-4 bg-[#fff] h-[5rem] px-[2rem] rounded-[0.5rem]">
           <Button
-            className="text-[black] bg-[--bg-info] border-0"
+            className="cursor-pointer text-[black] bg-[--bg-info] border-0 bg-"
             onClick={() => {
               console.log("Coordenadas:", markers);
             }}
@@ -87,7 +87,7 @@ export function Caminho() {
           </Button>
 
           <Button
-            className="bg-red-600 text-white"
+            className="bg-red-600 text-white cursor-pointer"
             onClick={() => {
               setMarkers([]);
               setIsClosed(false);
