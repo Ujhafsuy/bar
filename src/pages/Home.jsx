@@ -55,8 +55,8 @@ function Home() {
                     >
                     <div className="mt-[6rem] h-full flex flex-col items-center justify-between gap-[5rem]">
                         <div className="md:py-[5rem]">
-                            <h2 className="w-[20rem] md:w-[40rem] text-(--fontw-h2) md:text-[1.5rem] font-bold text-center mb-[1rem] dark:text-[black]">ECONOMIZE TEMPO E PREZERVE O MEIO AMBIENTE!</h2>
-                            <p className="w-[20rem] md:w-[40rem] text-justify md:text-[1.5rem] dark:text-[black]">Desenvolvido para remover resíduos sólidos de lagos de forma rápida, segura e ecológica. Equipado com sensores inteligentes, ele detecta e coleta lixo flutuante, ajudando a restaurar a qualidade da água e a preservar a vida aquática.</p>
+                            <h2 className="w-[20rem] md:w-[40rem] text-(--fontw-h2) md:text-[1.5rem] font-bold text-center mb-[1rem] dark:text-[black]">ECONOMIZE TEMPO E PRESERVE O MEIO AMBIENTE!</h2>
+                            <p className="w-[20rem] md:w-[40rem] text-justify md:text-[1.5rem] dark:text-[black]">Desenvolvido para remover resíduos químicos de lagos de forma eficiente, segura e ecológica. Equipado com uma bússuola e um GPS, para se locomover de forma automatizada, ajudando a restaurar a qualidade da água e a preservar a vida.</p>
                         </div>
 
                         <AnimatePresence mode="wait">
@@ -86,15 +86,15 @@ function Home() {
                     <div className="flex flex-col">
                     <AccordionItem
                     title="Instruções"
-                    content="Lorem ipsum dolor sit amet consectetur adipisicing elit..."
+                    content="Configure sua rota sempre pelo site, aqui mesmo, para ligar basta adicionar as pilhas no devido lugar."
                     />
                     <AccordionItem
                     title="Lista de Componentes"
-                    content="Todos os sensores, motores e chips usados no projeto..."
+                    content="Todos os sensores, motores e chips usados no projeto, como bússola, GPS, etc."
                     />
                     <AccordionItem
                     title="Referências"
-                    content="Livros e artigos que embasaram a construção do B.A.R..."
+                    content="Artigos que embasaram a construção do B.A.R., dê uma olhada na nossa página de Referências, acessada através do menu acima."
                     />
                     </div>
                 </section>

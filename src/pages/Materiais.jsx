@@ -255,15 +255,15 @@ function Materiais() {
                                     </div>
                                     <div>
                                     <span className="font-semibold">Conectividade:</span>
-                                    <p className="text-sm">WiFi + Bluetooth</p>
+                                    <p className="text-sm">WiFi</p>
                                     </div>
                                     <div>
                                     <span className="font-semibold">Alimentação:</span>
-                                    <p className="text-sm">5V USB / Bateria</p>
+                                    <p className="text-sm">Pilhas</p>
                                     </div>
                                     <div>
                                     <span className="font-semibold">Dimensões:</span>
-                                    <p className="text-sm">15 x 12 x 8 cm</p>
+                                    <p className="text-sm">30 x 20 x 5 cm</p>
                                     </div>
                                 </div>
                                 </div>

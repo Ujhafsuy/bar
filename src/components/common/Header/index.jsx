@@ -1,4 +1,4 @@
-import { Menu, User, X, SunDim, MoonIcon } from "lucide-react"
+import { Menu, User, X, SunDim, MoonIcon, MapPinned } from "lucide-react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import {useTheme } from "../../../contexts/ThemeContext"
@@ -31,9 +31,9 @@ export function Header(classNameh) {
         <header className={`fixed z-[10] bg-(--bg-header) w-full ${classNameh}`}>
             <div className="md:hidden">
                 <div className="w-full flex items-center justify-between p-[1rem]">
-                    {!openMenu ? <Menu onClick={abreMenu} className="cursor-pointer" /> : <X onClick={abreMenu} className="cursor-pointer" />}
-                    <Link to="/"><h1 className="text-[2.125rem]"><span className='text-(--ciano)'>B</span>.A.R.</h1></Link>
-                    {!openUser ? <User onClick={abreUser} className="rounded-[100%] w-[2.5rem] p-[0.5rem] h-[auto] cursor-pointer" /> : <User onClick={abreUser} className="bg-(--ciano) rounded-[100%] w-[2.5rem] p-[0.5rem] h-[auto] cursor-pointer" />}
+                    {!openMenu ? <Menu onClick={abreMenu} className="cursor-pointer " /> : <X onClick={abreMenu} className="cursor-pointer" />}
+                    <Link to="/"><h1 className="text-[2.125rem]"><span className='text-(--ciano) cursor-pointer'>B</span>.A.R.</h1></Link>
+                    <Link to="/trace"><MapPinned className="cursor-pointer w-[1.5rem] h-[auto]"/></Link>
                 </div>
                 <div className={`
                                 absolute h-screen w-full backdrop-blur flex items-center justify-center
@@ -56,25 +56,6 @@ export function Header(classNameh) {
                                 </li>
                                 <li className="py-[0.5rem] border-b border-b-(--color-border)">
                                     <Link to="/team">Team</Link>
-                                </li>
-                            </ol>
-                        </nav>
-                    </div>
-                    <div className={`
-                        transition-opacity duration-500 absolute h-screen w-full
-                        backdrop-blur flex items-center justify-center
-                        ${openUser ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-                        <nav className="flex bg-(--bg-header) w-[15rem] h-[20rem] rounded-[1rem]">
-                            <ol className="flex flex-col justify-center gap-[2rem] p-[2rem] w-full">
-                                <div onClick={toggleTheme}className="flex gap-[1rem] cursor-pointer">{theme == 'light'? (<>
-                        <SunDim></SunDim><span>Modo claro</span></>
-                        ) : (<><MoonIcon></MoonIcon><span>Modo escuro</span></>)}
-                    </div>
-                                <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                    <Link to="/register">Sign-up</Link>
-                                </li>
-                                <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                    <Link to="/login">Log-in</Link>
                                 </li>
                             </ol>
                         </nav>
@@ -102,23 +83,8 @@ export function Header(classNameh) {
                                 <Link to="/team">Team</Link>
                             </li>
                             <li>
-                            {!openUser ? <User onClick={abreUser} className="rounded-[100%] w-[2.5rem] p-[0.5rem] h-[auto] cursor-pointer" /> : <User onClick={abreUser} className="bg-(--ciano) rounded-[100%] w-[2.5rem] p-[0.5rem] h-[auto] cursor-pointer" />}
+                                <Link to="/trace"><MapPinned className="cursor-pointer w-[1.5rem] h-[auto]"/></Link>
                             </li>
-                            <div className={`
-                                transition-opacity duration-500 absolute h-screen w-full top-1/2
-                                backdrop-blur flex items-center justify-center z-[-1]
-                                ${openUser ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-                                <nav className="flex bg-(--bg-header) w-[15rem] h-[20rem] rounded-[1rem]">
-                                    <ol className="flex flex-col justify-center gap-[2rem] p-[2rem] w-full">
-                                        <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                            <Link to="/register">Sign-up</Link>
-                                        </li>
-                                        <li className="py-[0.5rem] border-b border-b-(--color-border)">
-                                            <Link to="/login">Log-in</Link>
-                                        </li>
-                                    </ol>
-                                </nav>
-                            </div>
                             <div onClick={toggleTheme}className="text-left items-center justify-center flex gap-[1rem] cursor-pointer">{theme == 'light'? (
                         <SunDim></SunDim>
                         ) : (<MoonIcon></MoonIcon>)}

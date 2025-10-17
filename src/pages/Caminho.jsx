@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Polyline, useMapEvents } from 'react-leaflet';
 import L from 'leaflet';
 import { Button } from "../components/ui/button";
+import { createClient } from "@supabase/supabase-js";
 
 // Corrige os ícones do Leaflet no React
 delete L.Icon.Default.prototype._getIconUrl;
@@ -14,6 +15,8 @@ L.Icon.Default.mergeOptions({
   iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
   shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 });
+
+const supabase = createClient(import.meta.env.VITE_SUPABASE_URL, import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY);
 
 const LocationMarker = ({ onMapClick }) => {
   useMapEvents({
@@ -29,6 +32,33 @@ const LocationMarker = ({ onMapClick }) => {
 export function Caminho() {
   const [markers, setMarkers] = useState([]);
   const [isClosed, setIsClosed] = useState(false);
+
+  async function handleCoord(){
+    try {
+      const { error } = await supabase.rpc('truncate_robots')
+      if (error) {
+        console.error("Erro ao truncar:", error.message)
+      } else {
+        console.log("Tabela truncada com sucesso!")
+      }
+    } catch (err) {
+      console.error("Erro inesperado:", err.message)
+    }
+
+    for(let i = 0; i <= markers.length; i++){
+
+        try{
+          const { error } = await supabase
+            .from('robots')
+            .insert({id: i + 1, name: 'teste', coord_lat: markers[i][0], coord_long: markers[i][1], iduser: null })
+    
+          if(error) throw error
+    
+        } catch (err) {
+          console.error("Erro ao registrar:", err.message);
+        }
+      }
+  }
 
   const handleMapClick = (coords) => {
     if (isClosed) return; // Se o caminho foi fechado, não adiciona mais pontos
@@ -79,9 +109,7 @@ export function Caminho() {
         <div className="absolute md:bottom-10 md:left-10 bottom-10 flex items-center justify-center gap-4 mt-4 bg-[#fff] h-[5rem] px-[2rem] rounded-[0.5rem]">
           <Button
             className="cursor-pointer text-[black] bg-[--bg-info] border-0 bg-"
-            onClick={() => {
-              console.log("Coordenadas:", markers);
-            }}
+            onClick={handleCoord}
           >
             INICIAR
           </Button>
