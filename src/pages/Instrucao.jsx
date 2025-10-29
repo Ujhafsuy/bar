@@ -1,6 +1,12 @@
 import { Header } from "../components/common/Header"
 import Footer from "../components/common/Footer"
 
+import projeto from "../images/projeto.jpeg"
+import map from "../images/map.png"
+import mapPoint from "../images/map-point.png"
+import mapInit from "../images/map-init.png"
+import pilhas from "../images/pilhas.jpeg"
+
 import { Card, CardContent } from "../components/ui/card"
 import { Button } from "../components/ui/button"
 import { Menu, User, Play, Target, Brain, Clock, TrendingUp, CheckCircle } from 'lucide-react'
@@ -21,19 +27,17 @@ function Instrucao() {
                         ?
                         </div>
                         <h2 className="text-xl font-semibold text-white">
-                        O que vem na caixa?
+                        O que vem?
                         </h2>
                     </div>
                     <div className="grid md:grid-cols-2 gap-6 mb-[6rem]">
-                        <Card className="">
+                        <Card className="border-[0]">
                         <CardContent className="">
-                            <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                             <img
-                                src="/placeholder.svg?height=200&width=200"
+                                src={projeto}
                                 alt="Robô B.A.R."
                                 className="rounded-lg"
                             />
-                            </div>
                         </CardContent>
                         </Card>
 
@@ -84,13 +88,11 @@ function Instrucao() {
                         <div className="grid md:grid-cols-2 gap-6 mb-6">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                             <CardContent className="">
-                                <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
-                                    src="/placeholder.svg?height=200&width=200"
+                                    src={pilhas}
                                     alt="Conectando B.A.R."
                                     className="rounded-lg"
                                 />
-                                </div>
                             </CardContent>
                             </Card>
 
@@ -100,13 +102,11 @@ function Instrucao() {
                             </p>
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
                                 <CardContent className="">
-                                <div className="aspect-video bg-gray-300 rounded-lg flex items-center justify-center">
                                     <img
-                                    src="/placeholder.svg?height=120&width=200"
+                                    src={map}
                                     alt="Tutorial de conexão"
                                     className="rounded-lg"
                                     />
-                                </div>
                                 </CardContent>
                             </Card>
                             </div>
@@ -136,68 +136,16 @@ function Instrucao() {
                         </p>
                         </div>
 
-                        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                        <div className="text-center">
-                            <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
-                            <CardContent className="">
-                                <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
-                                <img
-                                    src="/placeholder.svg?height=100&width=100"
-                                    alt="Menu configuração"
-                                    className="rounded-lg"
-                                />
-                                </div>
-                            </CardContent>
-                            </Card>
-                            <p className="text-white text-sm">
-                            No menu, vá no ícone de usuário.
-                            </p>
-                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
                         <div className="text-center">
                             <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
                             <CardContent className="">
-                                <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
-                                    src="/placeholder.svg?height=100&width=100"
-                                    alt="Configurar B.A.R"
-                                    className="rounded-lg"
-                                />
-                                </div>
-                            </CardContent>
-                            </Card>
-                            <p className="text-white text-sm">
-                            Efetue o cadastro.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
-                            <CardContent className="">
-                                <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
-                                <img
-                                    src="/placeholder.svg?height=100&width=100"
-                                    alt="Tipo de configuração"
-                                    className="rounded-lg"
-                                />
-                                </div>
-                            </CardContent>
-                            </Card>
-                            <p className="text-white text-sm">
-                            Após o login, você terá acesso ao menu de Rotas, acesse.
-                            </p>
-                        </div>
-
-                        <div className="text-center">
-                            <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
-                            <CardContent className="">
-                                <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
-                                <img
-                                    src="/placeholder.svg?height=100&width=100"
+                                    src={mapPoint}
                                     alt="Questionário"
                                     className="rounded-lg"
                                 />
-                                </div>
                             </CardContent>
                             </Card>
                             <p className="text-white text-sm">
@@ -206,15 +154,13 @@ function Instrucao() {
                         </div>
 
                         <div className="text-center">
-                            <Card className="bg-white/10 backdrop-blur-sm border-white/20 mb-4">
+                            <Card className="border-[0] flex items-center">
                             <CardContent className="">
-                                <div className="aspect-square bg-gray-300 rounded-lg flex items-center justify-center">
                                 <img
-                                    src="/placeholder.svg?height=100&width=100"
+                                    src={mapInit}
                                     alt="Pronto para usar"
                                     className="rounded-lg"
                                 />
-                                </div>
                             </CardContent>
                             </Card>
                             <p className="text-white text-sm">
@@ -308,13 +254,13 @@ function Instrucao() {
                 viewport={{ once: true, amount: 0.2 }} // só anima uma vez ao entrar 20% na tela
                 className="relative w-full"
                 >
-                    <section className="mb-16 flex flex-col w-full">
+                    {/**<section className="mb-16 flex flex-col w-full">
                         <div className="text-center">
                             <h2 className="text-2xl md:text-3xl font-bold text-white mb-8">
                                 VÍDEO PASSO A PASSO
                             </h2>
                             
-                            <Card className="bg-white/10 backdrop-blur-sm border-white/20 max-w-3xl mx-auto">
+                            <Card className="bg-white/10 border-[0] max-w-3xl mx-auto">
                                 <CardContent className="">
                                 <div className="aspect-video bg-gradient-to-br from-gray-600 to-gray-800 rounded-lg flex items-center justify-center relative overflow-hidden">
                                     <Button 
@@ -328,7 +274,7 @@ function Instrucao() {
                                 </CardContent>
                             </Card>
                         </div>
-                    </section>
+                    </section>**/}
                 </motion.div>
             </main>
             <Footer />

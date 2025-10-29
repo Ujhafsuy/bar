@@ -11,7 +11,7 @@ function Footer() {
             </div>
             <div className="w-[90%] flex justify-end gap-[1rem]">
                 <AtSign />
-                <Instagram />
+                <a href="https://www.instagram.com/theinfinityworks" target="_blank" rel="noopener noreferrer"><Instagram /></a>
             </div>
         </footer>
     )

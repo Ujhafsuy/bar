@@ -1,6 +1,7 @@
 import { Header } from "../components/common/Header";
 import Footer from "../components/common/Footer";
 import 'leaflet/dist/leaflet.css';
+import { Circle } from "lucide-react";
 
 import React, { useEffect, useState } from 'react';
 import { MapContainer, TileLayer, Marker, Polyline, useMapEvents } from 'react-leaflet';
@@ -8,7 +9,6 @@ import L from 'leaflet';
 import { Button } from "../components/ui/button";
 import { createClient } from "@supabase/supabase-js";
 
-// Corrige os ícones do Leaflet no React
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
@@ -33,6 +33,9 @@ export function Caminho() {
   const [markers, setMarkers] = useState([]);
   const [currentPosition, setCurrentPosition] = useState(null)
   const [isClosed, setIsClosed] = useState(false);
+  const [moving, setMoving] = useState(false);
+  const [circlePos, setCirclePos] = useState(null);
+  const animationRef = React.useRef(null);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -52,7 +55,60 @@ export function Caminho() {
     }
   })
 
+  useEffect(() => {
+    if (currentPosition) {
+      const container = document.getElementById("marker-root");
+      if (container) {
+        import("react-dom/client").then(({ createRoot }) => {
+          const root = createRoot(container);
+          root.render(
+            <CircleIcon className="w-6 h-6 text-red-600 drop-shadow-md" />
+          );
+        });
+      }
+    }
+  }, [currentPosition]);
+
+  const animateMovement = () => {
+    if (!markers.length || moving) return;
+    setMoving(true);
+
+    const points = [currentPosition, ...markers];
+    let segment = 0;
+    let progress = 0;
+    const speed = 0.001; // controle da velocidade
+
+    const animate = () => {
+      if (segment >= points.length - 1) {
+        setMoving(false);
+        cancelAnimationFrame(animationRef.current);
+        console.log("Percurso concluído");
+        return;
+      }
+
+      const [startLat, startLng] = points[segment];
+      const [endLat, endLng] = points[segment + 1];
+
+      const lat = startLat + (endLat - startLat) * progress;
+      const lng = startLng + (endLng - startLng) * progress;
+
+      setCirclePos([lat, lng]);
+      progress += speed;
+
+      if (progress >= 1) {
+        progress = 0;
+        segment++;
+      }
+
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
   async function handleCoord(){
+    animateMovement();
+
     try {
       const { error } = await supabase.rpc('truncate_robots')
       if (error) {
@@ -77,31 +133,52 @@ export function Caminho() {
           console.error("Erro ao registrar:", err.message);
         }
       }
+    
+    
   }
 
   const handleMapClick = (coords) => {
-    if (isClosed) return; // Se o caminho foi fechado, não adiciona mais pontos
-
-    if (markers.length > 0) {
-      const [firstLat, firstLng] = markers[0];
-      const [clickedLat, clickedLng] = coords;
-
-      const tolerance = 0.0001;
-      const isNearFirst =
-        Math.abs(firstLat - clickedLat) < tolerance &&
-        Math.abs(firstLng - clickedLng) < tolerance;
-
-      if (isNearFirst) {
-        // Fecha o trajeto adicionando o ponto inicial novamente
-        setMarkers([...markers, markers[0]]);
-        setIsClosed(true);
-        console.log("Trajeto fechado.");
-        return;
-      }
+    if (!currentPosition) return;
+    if (isClosed) return;
+  
+    let newMarkers = [...markers];
+  
+    if (newMarkers.length === 0) {
+      newMarkers.push(currentPosition);
     }
 
-    setMarkers([...markers, coords]);
+    const [firstLat, firstLng] = newMarkers[0];
+    const [clickedLat, clickedLng] = coords;
+    const tolerance = 0.0001;
+    const isNearFirst =
+      Math.abs(firstLat - clickedLat) < tolerance &&
+      Math.abs(firstLng - clickedLng) < tolerance;
+  
+    if (isNearFirst && newMarkers.length > 1) {
+      newMarkers.push(newMarkers[0]);
+      setMarkers(newMarkers);
+      setIsClosed(true);
+      console.log("Trajeto fechado.");
+      return;
+    }
+  
+    newMarkers.push(coords);
+    setMarkers(newMarkers);
   };
+
+  const customIcon = L.divIcon({
+    className: "custom-marker",
+    html: `
+      <div class="relative flex items-center justify-center">
+        <!-- Aura externa -->
+        <div class="absolute w-[32px] h-[32px] bg-blue-400 opacity-30 rounded-full animate-pulse"></div>
+        <!-- Círculo central -->
+        <div class="w-[24px] h-[24px] bg-blue-600 rounded-full border-[2px] border-white shadow-md"></div>
+      </div>
+    `,
+    iconSize: [44, 44],
+    iconAnchor: [12, 12],
+  });
 
   return (
     <div>
@@ -113,6 +190,11 @@ export function Caminho() {
             zoom={15}
             className="relative z-0 h-full w-full"
           >
+            {circlePos && (circlePos[0] !== currentPosition[0] || circlePos[1] !== currentPosition[1]) ? (
+              <Marker position={circlePos} icon={customIcon} />
+            ) : (
+              <Marker position={currentPosition} icon={customIcon} />
+            )}
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="© OpenStreetMap contributors"
@@ -136,7 +218,7 @@ export function Caminho() {
             className="cursor-pointer text-[black] bg-[--bg-info] border-0 bg-"
             onClick={handleCoord}
           >
-            INICIAR
+            {moving ? "MOVENDO..." : "INICIAR"}
           </Button>
 
           <Button
@@ -144,6 +226,7 @@ export function Caminho() {
             onClick={() => {
               setMarkers([]);
               setIsClosed(false);
+              setCirclePos(currentPosition);
             }}
           >
             REINICIAR

@@ -8,7 +8,7 @@ export function TeamMemberCard({ name, instagram, avatar, variant }) {
     <Card className={`${cardClasses} p-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-lg border-0`}>
       <div className={variant === "primary" ? 'flex items-center gap-4' : 'dark:text-[black] flex flex-row-reverse items-center gap-4' }>
         <Avatar className="w-16 h-16">
-          <AvatarImage src={avatar || "/placeholder.svg"} alt={name} />
+          <AvatarImage src={avatar || "/placeholder.svg"} alt={name} className="object-cover" />
           <AvatarFallback className="bg-muted text-muted-foreground text-lg font-semibold">
             {name
               .split(" ")

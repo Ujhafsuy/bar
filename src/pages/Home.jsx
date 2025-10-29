@@ -3,8 +3,8 @@ import { Button } from "../components/common/Button"
 import { AccordionItem } from "../components/common/Summary"
 import Footer from "../components/common/Footer"
 
-import projeto from '../images/projeto_fic.png'
-import projeto2 from '../images/projeto_fic1.png'
+import projeto from '../images/projeto.jpeg'
+import projeto2 from '../images/projeto5.jpeg'
 import { ArrowRight } from "lucide-react"
 
 import { motion, AnimatePresence } from "framer-motion";
@@ -27,7 +27,7 @@ function Home() {
             <Header />
             <main className="font-light">
                     <section className="h-[60rem] flex flex-col md:flex-row-reverse md:justify-around items-center justify-center bg-(--section-home-one) text-(--font-color)">
-                        <img src={projeto} alt="Foto do Projeto" className="rounded-[100%] w-[20rem] md:w-[40rem]" />
+                        <img src={projeto} alt="Foto do Projeto" className="rounded-[1rem] w-[20rem] md:w-[50rem] object-cover" />
                         <div className="">
                             <div className="flex flex-col items-center md:items-start">
                                 <h1 className="text-[7.5rem] md:text-[8.5rem] font-normal"><span className='text-(--ciano)'>B</span>.A.R.</h1>
