@@ -15,6 +15,7 @@ import bussola from "../images/bussola.png"
 import ponte from "../images/ponte.png"
 import reg from "../images/reg.png"
 import sup from "../images/sup.png"
+import projeto from "../images/projeto.jpeg"
 
 import { Star, Wifi, Bluetooth, Battery, Package2, ZoomIn, ShoppingCart, Info, ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -204,7 +205,7 @@ function Materiais() {
                             <Card className="bg-slate-700 border-slate-600 ">
                             <div className="aspect-square rounded-lg flex items-center justify-center">
                                 <img
-                                src="/cute-white-robot.png"
+                                src={projeto}
                                 alt="Robô B.A.R"
                                 className="w-full h-full object-cover rounded-lg"
                                 />
