@@ -69,6 +69,8 @@ export function Caminho() {
     }
   }, [currentPosition]);
 
+  /*
+  MOVIMENTAÇÃO DA "BOLINHA" ATRAVÉS DOS MARKERS HEHEHEH
   const animateMovement = () => {
     if (!markers.length || moving) return;
     setMoving(true);
@@ -76,7 +78,7 @@ export function Caminho() {
     const points = [currentPosition, ...markers];
     let segment = 0;
     let progress = 0;
-    const speed = 0.001; // controle da velocidade
+    const speed = 0.001                  ; // controle da velocidade
 
     const animate = () => {
       if (segment >= points.length - 1) {
@@ -104,7 +106,39 @@ export function Caminho() {
     };
 
     animationRef.current = requestAnimationFrame(animate);
-  };
+  };*/
+
+//MOVIMENTAÇÃO DA "BOLINHA" ATRAVÉS DO BANCO
+
+    useEffect(() => {
+      let interval;
+      async function fetchBoatPosition() {
+        try {
+          const { data, error } = await supabase
+          .from('now')
+          .select('lat, log')
+          .order('id', { ascending: false })
+          .limit(1);
+          
+          if (error) throw error;
+          console.log(data)
+          if (data && data.length > 0) {
+            const { lat, log } = data[0];
+            setCirclePos([lat, log]);
+          }
+        } catch (err) {
+          console.error("Erro ao buscar coordenadas:", err.message);
+        }
+      }
+
+      interval = setInterval(fetchBoatPosition, 1500);
+
+      // busca inicial imediata
+      fetchBoatPosition();
+
+      return () => clearInterval(interval);
+    }, []);
+
 
   async function handleCoord(){
     animateMovement();
@@ -190,11 +224,12 @@ export function Caminho() {
             zoom={15}
             className="relative z-0 h-full w-full"
           >
-            {circlePos && (circlePos[0] !== currentPosition[0] || circlePos[1] !== currentPosition[1]) ? (
+            {/*circlePos && (circlePos[0] !== currentPosition[0] || circlePos[1] !== currentPosition[1]) ? (
               <Marker position={circlePos} icon={customIcon} />
             ) : (
               <Marker position={currentPosition} icon={customIcon} />
-            )}
+            )*/}
+            {circlePos && <Marker position={circlePos} icon={customIcon} />}
             <TileLayer
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
               attribution="© OpenStreetMap contributors"

@@ -27,7 +27,7 @@ function Home() {
             <Header />
             <main className="font-light">
                     <section className="h-[60rem] flex flex-col md:flex-row-reverse md:justify-around items-center justify-center bg-(--section-home-one) text-(--font-color)">
-                        <img src={projeto} alt="Foto do Projeto" className="rounded-[1rem] w-[20rem] md:w-[50rem] object-cover" />
+                        <img src={projeto} alt="Foto do Projeto" className="rounded-[1rem] w-[20rem] md:w-[40%] object-cover" />
                         <div className="">
                             <div className="flex flex-col items-center md:items-start">
                                 <h1 className="text-[7.5rem] md:text-[8.5rem] font-normal"><span className='text-(--ciano)'>B</span>.A.R.</h1>
